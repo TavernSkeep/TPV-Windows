@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="340,250,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="Button_Click"/>
-        <Image HorizontalAlignment="Left" Height="200" Margin="295,10,0,0" VerticalAlignment="Top" Source="/TavernSkeep;component/images/logo-skip.png" Width="200"/>
+        <Image Source="/TavernSkeep;component/images/OrcWithGrog.png" Margin="172,0,-274.4,0" ></Image>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="172,256,0,0" VerticalAlignment="Top" Width="116" Height="40" Click="Button_Click"/>
+        <Image HorizontalAlignment="Left" Height="200" Margin="142,30,0,0" VerticalAlignment="Top" Source="/TavernSkeep;component/images/logo-skip.png" Width="200"/>
 
     </Grid>
 </Window>
