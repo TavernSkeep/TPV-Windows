@@ -226,10 +226,10 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="logo-skip.png" />
     <Resource Include="images\TavernSkeepTablon.png" />
-    <Resource Include="fondotpv.jpg" />
     <Resource Include="images\OrcGrogBg.png" />
-    <Resource Include="images\fondotpv.jpg" />
+    <Resource Include="fondo.jpg" />
     <Content Include="images\OrcWithGrog.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

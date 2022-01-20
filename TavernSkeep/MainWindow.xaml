@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TavernSkeep"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid >
-        <Grid.Background >
-            <ImageBrush Opacity="0.9" ImageSource="fondotpv.jpg"/>
+        Title="TavernSkeep" Height="450" Width="800" IsEnabled="False"  Icon="/TavernSkeep;component/images/logo-skip.png">
+    <Grid IsEnabled="False" >
+        <Grid.Background>
+            <ImageBrush ImageSource="fondo.jpg"/>
         </Grid.Background>
         <Image Source="/TavernSkeep;component/images/OrcGrogBg.png" Margin="200,0,-302.4,0" ></Image>
         <Button Content="Button" HorizontalAlignment="Left" Margin="172,256,0,0" VerticalAlignment="Top" Width="116" Height="40" Click="Button_Click"/>
