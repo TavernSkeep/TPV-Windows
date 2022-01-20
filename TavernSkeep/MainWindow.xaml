@@ -10,9 +10,9 @@
         <Grid.Background >
             <ImageBrush Opacity="0.9" ImageSource="fondotpv.jpg"/>
         </Grid.Background>
-        <Image Source="/TavernSkeep;component/images/OrcWithGrog.png" Margin="172,0,-274.4,0" ></Image>
+        <Image Source="/TavernSkeep;component/images/OrcGrogBg.png" Margin="200,0,-302.4,0" ></Image>
         <Button Content="Button" HorizontalAlignment="Left" Margin="172,256,0,0" VerticalAlignment="Top" Width="116" Height="40" Click="Button_Click"/>
-        <Image HorizontalAlignment="Left" Height="200" Margin="142,30,0,0" VerticalAlignment="Top" Source="/TavernSkeep;component/images/logo-skip.png" Width="200"/>
+        <Image HorizontalAlignment="Left" Height="380" Margin="27,-54,0,0" VerticalAlignment="Top" Source="/TavernSkeep;component/images/TavernSkeepTablon.png" Width="408"/>
 
     </Grid>
 </Window>
