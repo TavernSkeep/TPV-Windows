@@ -24,6 +24,7 @@ namespace TavernSkeep
         {
             InitializeComponent();
             Console.WriteLine("Always skeep = true");
+            //Hola
         }
     }
 }
