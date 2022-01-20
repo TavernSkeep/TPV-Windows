@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RestSharp;
 
 namespace TavernSkeep
 {
@@ -25,6 +26,13 @@ namespace TavernSkeep
             InitializeComponent();
             Console.WriteLine("Always skeep = true");
             //Hola
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var res = new RestClient("http://localhost:8080");
+            var request = new RestRequest("/empleado", Method.Post);
+            res.ExecutePostAsync(request);
         }
     }
 }
