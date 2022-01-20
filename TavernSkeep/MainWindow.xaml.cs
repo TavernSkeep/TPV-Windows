@@ -30,7 +30,7 @@ namespace TavernSkeep
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var res = new RestClient("http://localhost:8080");
+            var res = new RestClient("http://10.2.40.119:8080");
             var request = new RestRequest("/empleado", Method.Post);
             res.ExecutePostAsync(request);
         }

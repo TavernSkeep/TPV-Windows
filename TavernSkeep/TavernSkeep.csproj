@@ -226,6 +226,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="fondotpv.jpg" />
     <Content Include="images\OrcWithGrog.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
