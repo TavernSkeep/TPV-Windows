@@ -23,6 +23,7 @@ namespace TavernSkeep
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine("Always skeep = true");
         }
     }
 }
