@@ -11,8 +11,57 @@
             <ImageBrush ImageSource="fondo.jpg"/>
         </Grid.Background>
         <Image Source="/TavernSkeep;component/images/OrcGrogBg.png" Margin="200,0,-302.4,0" ></Image>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="172,256,0,0" VerticalAlignment="Top" Width="116" Height="40" Click="Button_Click"/>
         <Image HorizontalAlignment="Left" Height="380" Margin="27,-54,0,0" VerticalAlignment="Top" Source="/TavernSkeep;component/images/TavernSkeepTablon.png" Width="408"/>
+        <Image Source="cartel.png" Margin="16,220,363.6,17"></Image>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="175,372,0,0" VerticalAlignment="Top" Width="88" Height="21" Click="Button_Click"/>
+        <TextBox x:Name="dni" Width="200px" Height="20px" Margin="125,298,468.6,102" TextAlignment="Left" Text="">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="DNI" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <TextBox x:Name="contraseña1" Width="200px" Height="20px" Margin="125,331,468.6,69" TextAlignment="Left">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Contraseña" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
 
     </Grid>
 </Window>

@@ -230,6 +230,10 @@
     <Resource Include="images\TavernSkeepTablon.png" />
     <Resource Include="images\OrcGrogBg.png" />
     <Resource Include="fondo.jpg" />
+    <Resource Include="images\cartel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="cartel.png" />
     <Content Include="images\OrcWithGrog.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
