@@ -183,6 +183,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Empleado.cs" />
     <Compile Include="SkeepHub.xaml.cs">
       <DependentUpon>SkeepHub.xaml</DependentUpon>
     </Compile>

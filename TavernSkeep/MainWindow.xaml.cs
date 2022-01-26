@@ -38,7 +38,7 @@ namespace TavernSkeep
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            string id = "/empleado" + dni.Text;
+            string id = "/empleado/" + dni.Text;
             /*
             try
             {
@@ -51,12 +51,11 @@ namespace TavernSkeep
                 Console.WriteLine(ex.Message);
             }
             */
-            //var request = new RestRequest(id, Method.Get);
-            var request = new RestRequest();
-            request.AddParameter("dni", dni.Text);
-            var response = client.ExecuteGetAsync(request);
-            Console.WriteLine(response.Result.ToString());
-            Console.Read();
+
+            var request = new RestRequest(id, Method.Get);
+            var response = client.GetAsync(request);
+            MessageBox.Show(response.IsCompleted.ToString());
+            MessageBox.Show(response.Result.Content);
 
             this.Hide();
             SkeepHub a = new SkeepHub();
