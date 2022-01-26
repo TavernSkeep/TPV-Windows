@@ -82,7 +82,7 @@
                 </TextBox>
             </Viewbox>
             <Viewbox  Stretch="Uniform" MaxWidth="450px">
-                <Button Content="Button" Width="auto" Height="auto" MinHeight="30px"  MinWidth="190px" VerticalAlignment="Center" Margin="0,0,0,0" MaxWidth="350px"></Button>
+                <Button Content="Button" Width="auto" Height="auto" MinHeight="30px"  MinWidth="190px" VerticalAlignment="Center" Margin="0,0,0,0" MaxWidth="350px" Click="Button_Click_1"></Button>
             </Viewbox>
 
         </StackPanel>

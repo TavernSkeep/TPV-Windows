@@ -34,5 +34,14 @@ namespace TavernSkeep
             var request = new RestRequest("/empleado", Method.Post);
             res.ExecutePostAsync(request);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            SkeepHub a = new SkeepHub();
+            a.WindowState = this.WindowState;
+            a.Show();
+            this.Close();
+        }
     }
 }
