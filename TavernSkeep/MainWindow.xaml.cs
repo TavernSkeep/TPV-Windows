@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 
 namespace TavernSkeep
@@ -21,7 +22,7 @@ namespace TavernSkeep
     /// </summary>
     public partial class MainWindow : Window
     {
-        RestClient client = new RestClient("http://192.168.1.72:8080");
+        RestClient client = new RestClient("http://25.81.98.245:8080");
         public MainWindow()
         {
             InitializeComponent();
@@ -39,24 +40,21 @@ namespace TavernSkeep
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             string id = "/empleado/" + dni.Text;
-            /*
+            
             try
             {
                 var request = new RestRequest(id, Method.Get);
-                var response = res.ExecuteGetAsync(request);
-                Console.WriteLine(response.Result.ToString());
+                var response = client.GetAsync(request);
+                JObject json = JObject.Parse(response.Result.Content);
+                MessageBox.Show(response.IsCompleted.ToString());
+                MessageBox.Show(response.Result.Content);
+                MessageBox.Show(json.ToString());
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            */
-
-            var request = new RestRequest(id, Method.Get);
-            var response = client.GetAsync(request);
-            MessageBox.Show(response.IsCompleted.ToString());
-            MessageBox.Show(response.Result.Content);
-
+            
             this.Hide();
             SkeepHub a = new SkeepHub();
             a.WindowState = this.WindowState;
