@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:TavernSkeep"
         mc:Ignorable="d"
         Title="SkeepHub" Height="450" Width="800">
@@ -10,7 +11,7 @@
         <Grid x:Name="content" Visibility="Collapsed">
             <Button Width="100px" Height="20px" Content="uwu" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
         </Grid>
-        <MediaElement x:Name="media" UnloadedBehavior="Manual" MediaEnded="media_MediaEnded" Stretch="Fill" Grid.ColumnSpan="2" Grid.RowSpan="2" Source="medieval-inn.gif"></MediaElement>
-        <MediaElement x:Name="media_dots" UnloadedBehavior="Manual" Width="400px" Height="200px" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Grid.ColumnSpan="2" Grid.RowSpan="2" MediaEnded="media_dots_MediaEnded" Source="loading-dots-white.gif"></MediaElement>
+        <Image Name="loadbg" gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/medieval-inn.gif" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+        <Image Name="loaddots" gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/loading-dots-white2.gif" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>

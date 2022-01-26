@@ -29,17 +29,13 @@ namespace TavernSkeep
 
         DispatcherTimer timer = new DispatcherTimer();
 
-        private void media_MediaEnded(object sender, RoutedEventArgs e)
-        {
-            media.Position = new TimeSpan(0, 0, 1);
-            media.Play();
-        }
-
         private void timer_tick(Object sender, EventArgs e)
         {
             timer.Stop();
-            media.Visibility = Visibility.Hidden;
-            media_dots.Visibility = Visibility.Hidden;
+            loadbg.Visibility = Visibility.Hidden;
+            loaddots.Visibility = Visibility.Hidden;
+
+
             content.Visibility = Visibility.Visible;
         }
 
@@ -48,12 +44,6 @@ namespace TavernSkeep
             timer.Tick += timer_tick;
             timer.Interval = new TimeSpan(0, 0, 10);
             timer.Start();
-        }
-
-        private void media_dots_MediaEnded(object sender, RoutedEventArgs e)
-        {
-            media_dots.Position = new TimeSpan(0, 0, 1);
-            media_dots.Play();
         }
     }
 }

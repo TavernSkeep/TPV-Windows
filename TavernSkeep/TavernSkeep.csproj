@@ -274,6 +274,7 @@
     <Content Include="loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="loading-dots-white2.gif" />
     <Content Include="magic.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
