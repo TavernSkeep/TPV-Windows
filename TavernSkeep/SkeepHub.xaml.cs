@@ -23,7 +23,7 @@ namespace TavernSkeep
         public SkeepHub()
         {
             InitializeComponent();
-            media.Source = new Uri(Environment.CurrentDirectory + @"\images\magic.gif");
+            //media.Source = new Uri();
             Loading();
         }
 
@@ -47,7 +47,7 @@ namespace TavernSkeep
         void Loading()
         {
             timer.Tick += timer_tick;
-            timer.Interval = new TimeSpan(0, 0, 8);
+            timer.Interval = new TimeSpan(0, 0, 10);
             timer.Start();
         }
     }
