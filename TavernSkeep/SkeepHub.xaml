@@ -11,6 +11,6 @@
             <Button Width="100px" Height="20px" Content="uwu" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
         </Grid>
         <MediaElement x:Name="media" UnloadedBehavior="Manual" MediaEnded="media_MediaEnded" Stretch="Fill" Grid.ColumnSpan="2" Grid.RowSpan="2" Source="medieval-inn.gif"></MediaElement>
-        <Label x:Name="label_loading" Content="Loading" FontSize="90" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+        <Labelasda x:Name="label_loading" Content="Loading" FontSize="90" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Labelasda>
     </Grid>
 </Window>

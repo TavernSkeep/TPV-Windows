@@ -260,6 +260,9 @@
     <Resource Include="Cartel-TavernSkeep.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\loading-dots-white.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\magic.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
