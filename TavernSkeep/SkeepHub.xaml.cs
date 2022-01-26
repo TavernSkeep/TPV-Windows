@@ -39,9 +39,8 @@ namespace TavernSkeep
         {
             timer.Stop();
             media.Visibility = Visibility.Hidden;
+            media_dots.Visibility = Visibility.Hidden;
             content.Visibility = Visibility.Visible;
-            label_loading.Visibility = Visibility.Hidden;
-
         }
 
         void Loading()
@@ -49,6 +48,12 @@ namespace TavernSkeep
             timer.Tick += timer_tick;
             timer.Interval = new TimeSpan(0, 0, 10);
             timer.Start();
+        }
+
+        private void media_dots_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            media_dots.Position = new TimeSpan(0, 0, 1);
+            media_dots.Play();
         }
     }
 }
