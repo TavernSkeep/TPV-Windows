@@ -21,6 +21,7 @@ namespace TavernSkeep
     /// </summary>
     public partial class MainWindow : Window
     {
+        RestClient client = new RestClient("http://192.168.1.72:8080");
         public MainWindow()
         {
             InitializeComponent();
@@ -28,15 +29,35 @@ namespace TavernSkeep
             //Hola
         }
 
+        /*
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var res = new RestClient("http://192.168.1.72:8080");
             var request = new RestRequest("/empleado", Method.Post);
             res.ExecutePostAsync(request);
-        }
+        }*/
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            string id = "/empleado" + dni.Text;
+            /*
+            try
+            {
+                var request = new RestRequest(id, Method.Get);
+                var response = res.ExecuteGetAsync(request);
+                Console.WriteLine(response.Result.ToString());
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            */
+            //var request = new RestRequest(id, Method.Get);
+            var request = new RestRequest();
+            request.AddParameter("dni", dni.Text);
+            var response = client.ExecuteGetAsync(request);
+            Console.WriteLine(response.Result.ToString());
+            Console.Read();
+
             this.Hide();
             SkeepHub a = new SkeepHub();
             a.WindowState = this.WindowState;
