@@ -12,6 +12,6 @@
             <Button Width="100px" Height="20px" Content="uwu" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
         </Grid>
         <Image Name="loadbg" gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/medieval-inn.gif" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
-        <Image Name="loaddots" gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/loading-dots-white2.gif" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Image Name="loaddots" gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/loading_dots_white.gif" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>

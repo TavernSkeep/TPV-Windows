@@ -263,6 +263,9 @@
     <Content Include="images\loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\loading_dots_white.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\magic.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -275,6 +278,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="loading-dots-white2.gif" />
+    <Resource Include="loading_dots_white.gif" />
     <Content Include="magic.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
