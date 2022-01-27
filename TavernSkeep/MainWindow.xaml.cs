@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
@@ -40,26 +41,49 @@ namespace TavernSkeep
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             string id = "/empleado/" + dni.Text;
-            
-            try
+
+            var request = new RestRequest(id, Method.Get);
+            var response = client.GetAsync(request);
+            //JObject json = JObject.Parse(response.Result.Content);
+            Empleado emp1 = JsonConvert.DeserializeObject<Empleado>(response.Result.Content);
+            MessageBox.Show(response.Result.Content);
+
+            if (!response.Result.Content.Equals(null))
+                emp1 = new Empleado();
+
+            //MessageBox.Show(empleado1.ToString());
+            //MessageBox.Show(response.Result.Content.ToString());
+
+            if (dni.Text.Equals(null) || dni.Text.Equals("") || dni.Text.Equals(" "))
             {
-                var request = new RestRequest(id, Method.Get);
-                var response = client.GetAsync(request);
-                JObject json = JObject.Parse(response.Result.Content);
-                MessageBox.Show(response.IsCompleted.ToString());
-                MessageBox.Show(response.Result.Content);
-                MessageBox.Show(json.ToString());
+                MessageBox.Show("Se requiere introducir el DNI del empleado.");
+
             }
-            catch(Exception ex)
+            else if (contraseña1.Text.Equals(null) || contraseña1.Text.Equals("") || contraseña1.Text.Equals(" "))
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show("Se requiere introducir la contraseña del empleado.");
+
             }
-            
-            this.Hide();
-            SkeepHub a = new SkeepHub();
-            a.WindowState = this.WindowState;
-            a.Show();
-            this.Close();
+            else if (response.Result.Content.Equals(null))
+            {
+                MessageBox.Show("Hola");
+            }
+            else if (emp1.Dni.Equals(dni.Text) && emp1.Contraseña.Equals(contraseña1.Text))
+            {
+                this.Hide();
+                SkeepHub a = new SkeepHub();
+                a.WindowState = this.WindowState;
+                a.Show();
+                this.Close();
+            }
+            /*
+            MessageBox.Show(myDetails.dni);
+            MessageBox.Show(response.IsCompleted.ToString());
+            MessageBox.Show(response.Result.Content);
+            MessageBox.Show(json.ToString());
+            */
         }
+
+
     }
 }
