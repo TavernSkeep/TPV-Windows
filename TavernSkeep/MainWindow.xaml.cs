@@ -48,7 +48,7 @@ namespace TavernSkeep
             Empleado emp1 = JsonConvert.DeserializeObject<Empleado>(response.Result.Content);
             MessageBox.Show(response.Result.Content);
 
-            if (!response.Result.Content.Equals(null))
+            if (response.Result.Content.Equals("null"))
                 emp1 = new Empleado();
 
             //MessageBox.Show(empleado1.ToString());
@@ -64,9 +64,13 @@ namespace TavernSkeep
                 MessageBox.Show("Se requiere introducir la contraseña del empleado.");
 
             }
-            else if (response.Result.Content.Equals(null))
+            else if (response.Result.Content.Equals("null"))
             {
-                MessageBox.Show("Hola");
+                MessageBox.Show("El DNI del empleado introducido es incorrecto o no existe.");
+
+            }else if (!emp1.Dni.Equals(contraseña1.Text))
+            {
+                MessageBox.Show("Contraseña incorrecta.");
             }
             else if (emp1.Dni.Equals(dni.Text) && emp1.Contraseña.Equals(contraseña1.Text))
             {
