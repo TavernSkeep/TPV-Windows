@@ -25,6 +25,7 @@ namespace TavernSkeep
             InitializeComponent();
             //media.Source = new Uri();
             Loading();
+            startClock();
         }
 
         DispatcherTimer timer = new DispatcherTimer();
@@ -44,6 +45,19 @@ namespace TavernSkeep
             timer.Tick += timer_tick;
             timer.Interval = new TimeSpan(0, 0, 10);
             timer.Start();
+        }
+
+        private void startClock()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += tickevent;
+            timer.Start();
+        }
+
+        private void tickevent(object sender, EventArgs e)
+        {
+            timetpv.Text = DateTime.Now.ToString();
         }
     }
 }
