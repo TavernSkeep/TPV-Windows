@@ -45,16 +45,12 @@ namespace TavernSkeep
             var request = new RestRequest(id, Method.Get);
             var response = client.GetAsync(request);
             //JObject json = JObject.Parse(response.Result.Content);
-            Empleado emp1 = JsonConvert.DeserializeObject<Empleado>(response.Result.Content);
-            MessageBox.Show(response.Result.Content);
+            Empleado emp1 = new Empleado();
 
-            if (response.Result.Content.Equals("null"))
-                emp1 = new Empleado();
+            if (!response.Result.Content.Equals("null"))
+                emp1 = JsonConvert.DeserializeObject<Empleado>(response.Result.Content);
 
-            //MessageBox.Show(empleado1.ToString());
-            //MessageBox.Show(response.Result.Content.ToString());
-
-            if (dni.Text.Equals(null) || dni.Text.Equals("") || dni.Text.Equals(" "))
+            if (dni.Text.Equals(null) || dni.Text.Equals("") || dni.Text.Contains(" "))
             {
                 MessageBox.Show("Se requiere introducir el DNI del empleado.");
 
@@ -68,7 +64,8 @@ namespace TavernSkeep
             {
                 MessageBox.Show("El DNI del empleado introducido es incorrecto o no existe.");
 
-            }else if (!emp1.Dni.Equals(contraseña1.Text))
+            }
+            else if (!emp1.Contraseña.Equals(contraseña1.Text))
             {
                 MessageBox.Show("Contraseña incorrecta.");
             }
