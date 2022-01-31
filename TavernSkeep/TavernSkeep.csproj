@@ -265,6 +265,10 @@
     <Resource Include="images\mapa.png" />
     <Resource Include="button.png" />
     <Resource Include="images\libro.png" />
+    <Resource Include="images\arrow_bottom.png" />
+    <Resource Include="images\arrow_left.png" />
+    <Resource Include="images\arrow_right.png" />
+    <Resource Include="images\arrow_up.png" />
     <Content Include="images\loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -281,6 +285,8 @@
   <ItemGroup>
     <Resource Include="images\pergamino.png" />
     <Resource Include="images\button.png" />
+    <Resource Include="images\ramen.jpg" />
+    <Resource Include="images\menu_horizontal.png" />
     <Content Include="loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

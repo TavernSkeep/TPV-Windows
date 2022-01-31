@@ -6,7 +6,9 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:TavernSkeep"
         mc:Ignorable="d"
-        Title="SkeepHub" Height="450" Width="800">
+        Title="SkeepHub" Height="450" Width="800"
+        MinHeight="500"
+        MinWidth="800">
     <Grid>
         <Grid x:Name="content" >
             <Grid.Background>
@@ -14,6 +16,7 @@
             </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30*"/>
+                
                 <ColumnDefinition Width="30*"/>
                 <ColumnDefinition Width="30*"/>
                 <ColumnDefinition Width="10*"/>
@@ -22,12 +25,78 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Name="timetpv" FontSize="18px" HorizontalAlignment="Right" TextWrapping="Wrap" Grid.Column="1" Grid.RowSpan="1" Grid.Row="0" Text="TextBlock" VerticalAlignment="Top" Width="190" Height="55" Foreground="White"/>
+            
             <Image Stretch="Fill" Source="/TavernSkeep;component/images/pergamino.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0" Grid.RowSpan="1" Grid.Row="0" RenderOptions.BitmapScalingMode="HighQuality"></Image>
-            <Image Source="/TavernSkeep;component/images/mapa.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0" Grid.RowSpan="1" Grid.Row="2" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+            <Image Source="/TavernSkeep;component/images/menu_horizontal.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0" Grid.RowSpan="1" Grid.Row="2" RenderOptions.BitmapScalingMode="HighQuality"></Image>
             <Viewbox Stretch="Fill" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
                 <Image Source="/TavernSkeep;component/images/libro.png" HorizontalAlignment="left" VerticalAlignment="Top"  Width="500px" RenderOptions.BitmapScalingMode="HighQuality" ></Image>
             </Viewbox>
+            
+            <Viewbox Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="200px">
+                <Grid Width="auto" Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="2">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="2">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="0">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="1">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="2">
+                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Viewbox>
+            
+            <TextBlock Name="timetpv" FontSize="18px" HorizontalAlignment="Left" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1" Text="TextBlock" VerticalAlignment="Bottom" Width="auto" Height="25" Foreground="White"/>
             <Button Margin="0,10,0,0" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" Width="125" Height="40px">
                 <Button.Background>
                     <ImageBrush ImageSource="button.png"/>

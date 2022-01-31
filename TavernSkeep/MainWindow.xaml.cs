@@ -46,9 +46,16 @@ namespace TavernSkeep
             var response = client.GetAsync(request);
             //JObject json = JObject.Parse(response.Result.Content);
             Empleado emp1 = new Empleado();
-
-            if (!response.Result.Content.Equals("null"))
-                emp1 = JsonConvert.DeserializeObject<Empleado>(response.Result.Content);
+            try
+            {
+                if (!response.Result.Content.Equals("null"))
+                    emp1 = JsonConvert.DeserializeObject<Empleado>(response.Result.Content);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Ha habido problemas conectando con la base de datos, compruebe su conexión.");
+                return;
+            }
+            
 
             if (dni.Text.Equals(null) || dni.Text.Equals("") || dni.Text.Contains(" "))
             {
