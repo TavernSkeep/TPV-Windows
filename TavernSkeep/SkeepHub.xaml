@@ -46,10 +46,12 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
+                    <Button>
+                        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Name="label1" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
                     <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
                         <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
                         <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
