@@ -270,6 +270,7 @@
     <Resource Include="images\arrow_left.png" />
     <Resource Include="images\arrow_right.png" />
     <Resource Include="images\arrow_up.png" />
+    <Resource Include="images\boton.png" />
     <Content Include="images\loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

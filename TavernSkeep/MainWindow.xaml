@@ -82,7 +82,12 @@
                 </TextBox>
             </Viewbox>
             <Viewbox  Stretch="Uniform" MaxWidth="450px">
-                <Button Content="Button" Width="auto" Height="auto" MinHeight="30px"  MinWidth="190px" VerticalAlignment="Center" Margin="0,0,0,0" MaxWidth="350px" Click="Button_Click_1"></Button>
+                <Button Content="start" Width="auto" Height="auto" MinHeight="30px"  MinWidth="150px" Foreground="White" VerticalAlignment="Center" Margin="0,0,0,0" MaxWidth="250px" Click="Button_Click_1" FontFamily="/TavernSkeep;component/font/#Arcade N">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/TavernSkeep;component/images/boton.png"/>
+                    </Button.Background>
+
+                </Button>
             </Viewbox>
 
         </StackPanel>
