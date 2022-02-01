@@ -262,16 +262,17 @@
     <Resource Include="Cartel-TavernSkeep.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\libro.jpg" />
     <Resource Include="images\mapa.png" />
     <Resource Include="button.png" />
-    <Resource Include="images\libro.png" />
     <Resource Include="images\arrow_bottom.png" />
     <Resource Include="images\arrow_left.png" />
     <Resource Include="images\arrow_right.png" />
     <Resource Include="images\arrow_up.png" />
     <Resource Include="images\boton.png" />
     <Resource Include="images\boton_focus.png" />
+    <Resource Include="images\bottom_bar.png" />
+    <Resource Include="bottom_bar.png" />
+    <Resource Include="images\libro.png" />
     <Content Include="images\loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
