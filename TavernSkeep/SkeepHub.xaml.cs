@@ -59,5 +59,20 @@ namespace TavernSkeep
         {
             timetpv.Text = DateTime.Now.ToString();
         }
+        private void b1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button enterPanel = sender as Button;
+            StackPanel aux = enterPanel.Content as StackPanel;
+            Label aux2 = aux.Children[1] as Label;
+            aux2.Background = new SolidColorBrush(Colors.LightGreen);
+        }
+
+        private void b1_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button enterPanel = sender as Button;
+            StackPanel aux = enterPanel.Content as StackPanel;
+            Label aux2 = aux.Children[1] as Label;
+            aux2.Background = new SolidColorBrush(Colors.LightGray);
+        }
     }
 }

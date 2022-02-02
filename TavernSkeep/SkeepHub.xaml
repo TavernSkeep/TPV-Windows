@@ -9,6 +9,28 @@
         Title="SkeepHub" Height="450" Width="800"
         MinHeight="500"
         MinWidth="800">
+    <Window.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid x:Name="content" >
             <Grid.Background>
@@ -59,56 +81,84 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button>
-                        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="0" Grid.Column="0">
+                        <StackPanel Orientation="Vertical">
                             <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label Name="label1" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Button>
-                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="2">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="2">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="0">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center" FontFamily="/TavernSkeep;component/font/#Arcade N"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="1">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="2">
-                        <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                        <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                    </StackPanel>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="0" Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="0" Grid.Column="2">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="1" Grid.Column="0">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="1" Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="1" Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="1" Grid.Column="2">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="2" Grid.Column="0">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="2" Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="2" Grid.Column="2">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="3" Grid.Column="0">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="3" Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="3" Grid.Column="2">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
+                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
                 </Grid>
             </Viewbox>
 
@@ -120,8 +170,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="12*"/>
                         <ColumnDefinition Width="78*"/>
-                        <ColumnDefinition Width="14*"/>
-                        <ColumnDefinition Width="118*"/>
+                        <ColumnDefinition Width="16*"/>
+                        <ColumnDefinition Width="112*"/>
                         <ColumnDefinition Width="17*"/>
                         <ColumnDefinition Width="107*"/>
                         <ColumnDefinition Width="13*"/>
@@ -133,8 +183,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Name="timetpv" FontSize="18px" HorizontalAlignment="Left" TextWrapping="Wrap" Grid.Column="3" Grid.Row="1" Text="Hora" VerticalAlignment="Center" Foreground="White" Grid.ColumnSpan="1">
-                    </TextBlock>
+                    <TextBlock Name="timetpv" FontSize="18px" HorizontalAlignment="Left" TextWrapping="Wrap" Grid.Column="3" Text="Hora" VerticalAlignment="Center" Foreground="White" Margin="0,5,0,0" />
                 </Grid>
 
             </StackPanel>
