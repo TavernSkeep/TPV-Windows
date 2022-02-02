@@ -23,6 +23,9 @@ namespace TavernSkeep
         public SkeepHub()
         {
             InitializeComponent();
+            this.Cursor = Cursors.None;
+            Cursor cursor = new Cursor(Application.GetResourceStream(new Uri("cursors/sword.cur", UriKind.Relative)).Stream);
+            this.Cursor = cursor;
             //media.Source = new Uri();
             Loading();
             startClock();
