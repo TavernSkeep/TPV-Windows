@@ -273,6 +273,8 @@
     <Resource Include="images\bottom_bar.png" />
     <Resource Include="bottom_bar.png" />
     <Resource Include="images\libro.png" />
+    <Resource Include="cursors\sword.cur" />
+    <Resource Include="cursors\hand.cur" />
     <Content Include="images\loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

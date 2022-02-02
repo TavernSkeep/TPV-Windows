@@ -24,9 +24,14 @@ namespace TavernSkeep
     public partial class MainWindow : Window
     {
         RestClient client = new RestClient("http://25.81.98.245:8080");
+        //static Cursor sword = new Cursor(Application.GetResourceStream(new Uri("sword.cur")).Stream);
         public MainWindow()
         {
             InitializeComponent();
+            this.Cursor = Cursors.None;
+            Cursor cursor = new Cursor(Application.GetResourceStream(new Uri("cursors/sword.cur", UriKind.Relative)).Stream);
+            this.Cursor = cursor;
+            //Mouse.OverrideCursor = sword;
             Console.WriteLine("Always skeep = true");
             //Hola
         }
