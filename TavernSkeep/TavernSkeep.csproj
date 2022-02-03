@@ -275,6 +275,8 @@
     <Resource Include="images\libro.png" />
     <Resource Include="cursors\sword.cur" />
     <Resource Include="cursors\hand.cur" />
+    <Resource Include="boton.png" />
+    <Resource Include="arrow_left.png" />
     <Content Include="images\loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

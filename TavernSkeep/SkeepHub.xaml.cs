@@ -60,7 +60,10 @@ namespace TavernSkeep
 
         private void tickevent(object sender, EventArgs e)
         {
-            timetpv.Text = DateTime.Now.ToString();
+            datetpv.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            timetpv.Text = DateTime.Now.ToString("HH:mm:ss");
+
+            //("yyyy-MM-dd HH:mm:ss")
         }
         private void b1_MouseEnter(object sender, MouseEventArgs e)
         {
