@@ -187,6 +187,7 @@
       <DependentUpon>admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Empleado.cs" />
+    <Compile Include="Producto.cs" />
     <Compile Include="SkeepHub.xaml.cs">
       <DependentUpon>SkeepHub.xaml</DependentUpon>
     </Compile>

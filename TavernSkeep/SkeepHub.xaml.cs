@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +22,8 @@ namespace TavernSkeep
     /// </summary>
     public partial class SkeepHub : Window
     {
+        RestClient client = new RestClient("http://localhost:8080");
+        List<Producto> prList = new List<Producto>();
         public SkeepHub()
         {
             InitializeComponent();
@@ -29,6 +33,50 @@ namespace TavernSkeep
             //media.Source = new Uri();
             Loading();
             startClock();
+            ChargeProducts();
+            ShowProducts();
+        }
+
+        private void ShowProducts()
+        {
+            List<Viewbox> viewboxes = new List<Viewbox>();
+
+            foreach (Producto p in prList)
+            {
+                Viewbox v = new Viewbox();
+                Button b = new Button();
+                StackPanel s = new StackPanel();
+                Image i = new Image();
+                Label l = new Label();
+
+                //v.Child(b);
+                b.Content = s;
+                s.Children.Add(i);
+                s.Children.Add(l);
+            }
+        }
+
+        private void ChargeProducts()
+        {
+            var request = new RestRequest("/producto", Method.Get);
+            var response = client.GetAsync(request);
+            //var lista = new List<Producto>();
+            
+            try
+            {
+                if (!response.Result.Content.Equals("null"))
+                {
+                    prList = JsonConvert.DeserializeObject<List<Producto>>(response.Result.Content);
+                    MessageBox.Show(prList[0].Nombre);
+                    //prList = lista;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha habido problemas conectando con la base de datos, compruebe su conexión.");
+                return;
+            }
         }
 
         DispatcherTimer timer = new DispatcherTimer();
