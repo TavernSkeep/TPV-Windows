@@ -277,6 +277,7 @@
     <Resource Include="cursors\hand.cur" />
     <Resource Include="boton.png" />
     <Resource Include="arrow_left.png" />
+    <Resource Include="images\calc_bar.png" />
     <Content Include="images\loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

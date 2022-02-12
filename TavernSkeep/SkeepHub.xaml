@@ -86,7 +86,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Image Source="/TavernSkeep;component/images/bottom_bar.png" Grid.ColumnSpan="4"/>
+                    <Image Source="/TavernSkeep;component/images/calc_bar.png" Grid.ColumnSpan="4"/>
 
                     <Button Content="1" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
                           ClickMode="Press" UseLayoutRounding="True" Grid.Row="1">
@@ -656,7 +656,7 @@
                 </Grid>
             </Viewbox>
 
-            <StackPanel Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="6" Margin="16.4,0.549,0.2,-0.149">
+            <StackPanel Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="5">
                 <StackPanel.Background>
                     <ImageBrush  ImageSource="/TavernSkeep;component/images/bottom_bar.png"/>
                 </StackPanel.Background>
@@ -690,12 +690,12 @@
             <Grid Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="12*"/>
-                    <ColumnDefinition Width="78*"/>
-                    <ColumnDefinition Width="16*"/>
-                    <ColumnDefinition Width="112*"/>
-                    <ColumnDefinition Width="17*"/>
-                    <ColumnDefinition Width="107*"/>
-                    <ColumnDefinition Width="13*"/>
+                    <ColumnDefinition Width="74*"/>
+                    <ColumnDefinition Width="24*"/>
+                    <ColumnDefinition Width="106*"/>
+                    <ColumnDefinition Width="23*"/>
+                    <ColumnDefinition Width="105*"/>
+                    <ColumnDefinition Width="18*"/>
                     <ColumnDefinition Width="70*"/>
                     <ColumnDefinition Width="18*"/>
                     <ColumnDefinition Width="78*"/>
@@ -706,8 +706,8 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="0.5*"/>
                 </Grid.RowDefinitions>
-                <Viewbox Grid.Column="1" Grid.Row="1">
-                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="timetpv" FontSize="13px" HorizontalAlignment="Center"  Text="Hora" VerticalAlignment="Center" Foreground="White"/>
+                <Viewbox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1">
+                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="timetpv" FontSize="13px"  Text="Hora" VerticalAlignment="Center" Foreground="White"/>
                 </Viewbox>
 
                 <Viewbox Grid.Column="3" Grid.Row="1">
