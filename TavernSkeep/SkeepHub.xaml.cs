@@ -80,5 +80,12 @@ namespace TavernSkeep
             Label aux2 = aux.Children[1] as Label;
             aux2.Background = new SolidColorBrush(Colors.LightGray);
         }
+
+        private void Admin_Click(object sender, RoutedEventArgs e)
+        {
+            admin MiVentana = new admin();
+            MiVentana.Owner = this;
+            MiVentana.ShowDialog();
+        }
     }
 }

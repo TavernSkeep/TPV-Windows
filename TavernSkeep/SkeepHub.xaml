@@ -884,7 +884,7 @@
 
                 <Viewbox Grid.Column="1" Grid.Row="10">
                     <Button Content="ADMIN" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="Admin" ClickMode="Press" UseLayoutRounding="True" FontSize="30">
+                          x:Name="Admin" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="Admin_Click">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">
