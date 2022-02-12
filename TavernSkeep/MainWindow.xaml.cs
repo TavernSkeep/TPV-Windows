@@ -23,7 +23,7 @@ namespace TavernSkeep
     /// </summary>
     public partial class MainWindow : Window
     {
-        RestClient client = new RestClient("http://25.81.98.245:8080");
+        RestClient client = new RestClient("http://localhost:8080");
         //static Cursor sword = new Cursor(Application.GetResourceStream(new Uri("sword.cur")).Stream);
         public MainWindow()
         {
