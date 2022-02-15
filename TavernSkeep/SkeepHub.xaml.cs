@@ -2,7 +2,9 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +26,9 @@ namespace TavernSkeep
     {
         RestClient client = new RestClient("http://localhost:8080");
         List<Producto> prList = new List<Producto>();
+        List<Producto> catList = new List<Producto>();
+        List<Producto> menuList = new List<Producto>();
+        PrivateFontCollection pfc = new PrivateFontCollection();
         public SkeepHub()
         {
             InitializeComponent();
@@ -41,18 +46,107 @@ namespace TavernSkeep
         {
             List<Viewbox> viewboxes = new List<Viewbox>();
 
-            foreach (Producto p in prList)
+            int row = 0;
+            int column = 0;
+
+            // Cargar categorias
+            foreach (Producto p in catList)
             {
+
                 Viewbox v = new Viewbox();
+                v.Stretch = Stretch.Fill;
+
                 Button b = new Button();
+                b.MouseEnter += b1_MouseEnter;
+                b.MouseLeave += b1_MouseLeave;
+
                 StackPanel s = new StackPanel();
+                s.Orientation = Orientation.Vertical;
+
+
                 Image i = new Image();
+                i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
+                i.Width = 300;
+                i.Height = 300;
+
                 Label l = new Label();
 
-                //v.Child(b);
+                l.FontWeight = FontWeights.Bold;
+                l.FontSize = 25;
+                l.BorderThickness = new Thickness(2);
+                l.BorderBrush = Brushes.Black;
+                l.Background = Brushes.LightGray;
+                l.HorizontalAlignment = HorizontalAlignment.Center;
+                l.Content = p.Nombre;
+
+
+                v.Child = b;
                 b.Content = s;
                 s.Children.Add(i);
                 s.Children.Add(l);
+
+                gridCategorias.Children.Add(v);
+
+                Grid.SetRow(v, row);
+                Grid.SetColumn(v, column);
+
+                column++;
+                if (column > 2)
+                {
+                    column = 0;
+                    row++;
+                }
+            }
+
+            // Cargar productos
+            row = 0;
+            column = 0;
+            foreach (Producto p in menuList)
+            {
+
+                Viewbox v = new Viewbox();
+                v.Stretch = Stretch.Fill;
+
+                Button b = new Button();
+                b.MouseEnter += b1_MouseEnter;
+                b.MouseLeave += b1_MouseLeave;
+
+                StackPanel s = new StackPanel();
+                s.Orientation = Orientation.Vertical;
+               
+
+                Image i = new Image();
+                i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
+                i.Width = 300;
+                i.Height = 300;
+
+                Label l = new Label();
+                
+                l.FontWeight = FontWeights.Bold;
+                l.FontSize = 25;
+                l.BorderThickness = new Thickness(2);
+                l.BorderBrush = Brushes.Black;
+                l.Background = Brushes.LightGray;
+                l.HorizontalAlignment = HorizontalAlignment.Center;
+                l.Content = p.Nombre;
+               
+
+                v.Child = b;
+                b.Content = s;
+                s.Children.Add(i);
+                s.Children.Add(l);
+
+                gridProductos.Children.Add(v);
+
+                Grid.SetRow(v, row);
+                Grid.SetColumn(v, column);
+
+                column++;
+                if (column > 2)
+                {
+                    column = 0;
+                    row++;
+                }
             }
         }
 
@@ -67,15 +161,23 @@ namespace TavernSkeep
                 if (!response.Result.Content.Equals("null"))
                 {
                     prList = JsonConvert.DeserializeObject<List<Producto>>(response.Result.Content);
-                    MessageBox.Show(prList[0].Nombre);
-                    //prList = lista;
                 }
-
+                else
+                    return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ha habido problemas conectando con la base de datos, compruebe su conexión.");
                 return;
+            }
+
+            foreach (Producto p in prList)
+            {
+
+                if (p.Es_categoria)
+                    catList.Add(p);
+                else
+                    menuList.Add(p);
             }
         }
 

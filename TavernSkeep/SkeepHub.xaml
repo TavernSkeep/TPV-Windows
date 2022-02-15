@@ -11,7 +11,7 @@
         MinWidth="800">
     <Window.Resources>
         <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
-        <Style x:Key="MyButtonStyle" TargetType="Button">
+        <Style x:Key="MyButtonStyle" TargetType="Button" x:Name="ButtonStyle">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Setter Property="Margin" Value="0"/>
             <Setter Property="Template">
@@ -491,99 +491,20 @@
                 </Viewbox>
             </Grid>
 
-
-
             <Viewbox Grid.RowSpan="2" Grid.Column="5" VerticalAlignment="Center" Grid.ColumnSpan="1" Grid.Row="2" Stretch="Fill" Margin="5,5,5,5">
-                <Grid Width="auto" Height="auto">
+                <Grid Width="auto" Height="auto" x:Name="gridProductos">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="33"/>
+                        <RowDefinition Height="33"/>
+                        <RowDefinition Height="33"/>
+                        <RowDefinition Height="33"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="33"/>
+                        <ColumnDefinition Width="33"/>
+                        <ColumnDefinition Width="33"/>
                     </Grid.ColumnDefinitions>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="0" Grid.Column="0" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center" FontFamily="/TavernSkeep;component/font/#Arcade N"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="0" Grid.Column="1" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label  FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="0" Grid.Column="2" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="1" Grid.Column="0" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="1" Grid.Column="1" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="1" Grid.Column="1" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="1" Grid.Column="2" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="2" Grid.Column="0" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="2" Grid.Column="1" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="2" Grid.Column="2" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="3" Grid.Column="0" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="3" Grid.Column="1" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Grid.Row="3" Grid.Column="2" Cursor="cursors/hand.cur">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                            <Label FontFamily="/TavernSkeep;component/font/#Arcade N" Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
+
                 </Grid>
             </Viewbox>
 
