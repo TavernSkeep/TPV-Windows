@@ -27,10 +27,10 @@ namespace TavernSkeep
         RestClient client = new RestClient("http://localhost:8080");
         List<List<Producto>> catPag = new List<List<Producto>>();
         List<List<Producto>> prPag = new List<List<Producto>>();
+        List<List<Producto>> productsFromCategory = new List<List<Producto>>();
         List<Producto> prList = new List<Producto>();
         List<Producto> catList = new List<Producto>();
         List<Producto> menuList = new List<Producto>();
-        PrivateFontCollection pfc = new PrivateFontCollection();
         int CurrentCategoryPage = 0;
         int CurrentProductPage = 0;
         public SkeepHub()
@@ -43,122 +43,14 @@ namespace TavernSkeep
             Loading();
             startClock();
             ChargeProducts();
-            ShowProducts();
-        }
-
-        private void ShowProducts()
-        {
-            List<Viewbox> viewboxes = new List<Viewbox>();
-
-            int row = 0;
-            int column = 0;
-
-            // Cargar categorias
-            foreach (Producto p in catPag[0])
-            {
-
-                Viewbox v = new Viewbox();
-                v.Stretch = Stretch.Fill;
-
-                Button b = new Button();
-                b.MouseEnter += b1_MouseEnter;
-                b.MouseLeave += b1_MouseLeave;
-
-                StackPanel s = new StackPanel();
-                s.Orientation = Orientation.Vertical;
-
-
-                Image i = new Image();
-                i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
-                i.Width = 300;
-                i.Height = 300;
-
-                Label l = new Label();
-
-                l.FontWeight = FontWeights.Bold;
-                l.FontSize = 25;
-                l.BorderThickness = new Thickness(2);
-                l.BorderBrush = Brushes.Black;
-                l.Background = Brushes.LightGray;
-                l.HorizontalAlignment = HorizontalAlignment.Center;
-                l.Content = p.Nombre;
-
-
-                v.Child = b;
-                b.Content = s;
-                s.Children.Add(i);
-                s.Children.Add(l);
-
-                gridCategorias.Children.Add(v);
-
-                Grid.SetRow(v, row);
-                Grid.SetColumn(v, column);
-
-                column++;
-                if (column > 2)
-                {
-                    column = 0;
-                    row++;
-                }
-            }
-
-            // Cargar productos
-            row = 0;
-            column = 0;
-            foreach (Producto p in prPag[0])
-            {
-
-                Viewbox v = new Viewbox();
-                v.Stretch = Stretch.Fill;
-
-                Button b = new Button();
-                b.MouseEnter += b1_MouseEnter;
-                b.MouseLeave += b1_MouseLeave;
-
-                StackPanel s = new StackPanel();
-                s.Orientation = Orientation.Vertical;
-               
-
-                Image i = new Image();
-                i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
-                i.Width = 300;
-                i.Height = 300;
-
-                Label l = new Label();
-                
-                l.FontWeight = FontWeights.Bold;
-                l.FontSize = 25;
-                l.BorderThickness = new Thickness(2);
-                l.BorderBrush = Brushes.Black;
-                l.Background = Brushes.LightGray;
-                l.HorizontalAlignment = HorizontalAlignment.Center;
-                l.Content = p.Nombre;
-               
-
-                v.Child = b;
-                b.Content = s;
-                s.Children.Add(i);
-                s.Children.Add(l);
-
-                gridProductos.Children.Add(v);
-
-                Grid.SetRow(v, row);
-                Grid.SetColumn(v, column);
-
-                column++;
-                if (column > 2)
-                {
-                    column = 0;
-                    row++;
-                }
-            }
+            UpdateCategoryPage(CurrentCategoryPage);
+            UpdateProductPage(CurrentProductPage);
         }
 
         private void ChargeProducts()
         {
             var request = new RestRequest("/producto", Method.Get);
             var response = client.GetAsync(request);
-            //var lista = new List<Producto>();
             
             try
             {
@@ -299,12 +191,33 @@ namespace TavernSkeep
             MiVentana.ShowDialog();
         }
 
+        private void MoreCategories(object sender, RoutedEventArgs e)
+        {
+            if (CurrentProductPage >= catPag.Count - 1)
+                return;
+            else
+            {
+                CurrentCategoryPage++;
+                UpdateCategoryPage(CurrentCategoryPage);
+            }
+        }
+
+        private void LessCategories(object sender, RoutedEventArgs e)
+        {
+            if (CurrentCategoryPage < 1)
+                return;
+            else
+            {
+                CurrentCategoryPage--;
+                UpdateCategoryPage(CurrentCategoryPage);
+            }
+        }
+
         private void MoreProducts(object sender, RoutedEventArgs e)
         {
-            if (CurrentProductPage + 1 > prPag.Count)
-            {
-                MessageBox.Show("Es la última vez que te lo digo. No hay más productos");
-            } else
+            if (CurrentProductPage  >= prPag.Count - 1)
+                return;
+            else
             {
                 CurrentProductPage++;
                 UpdateProductPage(CurrentProductPage);
@@ -313,17 +226,80 @@ namespace TavernSkeep
 
         private void LessProducts(object sender, RoutedEventArgs e)
         {
+            if (CurrentProductPage < 1)
+                return;
+            else
+            {
+                CurrentProductPage--;
+                UpdateProductPage(CurrentProductPage);
+            }
+        }
 
+        private void UpdateCategoryPage(int number)
+        {
+            gridProductos.Children.Clear();
+
+            int row = 0;
+            int column = 0;
+            foreach (Producto p in catPag[CurrentCategoryPage])
+            {
+
+                Viewbox v = new Viewbox();
+                v.Stretch = Stretch.Fill;
+
+                Button b = new Button();
+                b.Click += Categoria_Click;
+                b.MouseEnter += b1_MouseEnter;
+                b.MouseLeave += b1_MouseLeave;
+                b.Tag = p;
+
+                StackPanel s = new StackPanel();
+                s.Orientation = Orientation.Vertical;
+
+
+                Image i = new Image();
+                i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
+                i.Width = 300;
+                i.Height = 300;
+
+                Label l = new Label();
+
+                l.FontWeight = FontWeights.Bold;
+                l.FontSize = 25;
+                l.BorderThickness = new Thickness(2);
+                l.BorderBrush = Brushes.Black;
+                l.Background = Brushes.LightGray;
+                l.HorizontalAlignment = HorizontalAlignment.Center;
+                l.Content = p.Nombre;
+
+
+                v.Child = b;
+                b.Content = s;
+                s.Children.Add(i);
+                s.Children.Add(l);
+
+                gridCategorias.Children.Add(v);
+
+                Grid.SetRow(v, row);
+                Grid.SetColumn(v, column);
+
+                column++;
+                if (column > 2)
+                {
+                    column = 0;
+                    row++;
+                }
+            }
         }
 
         private void UpdateProductPage(int number)
         {
             gridProductos.Children.Clear();
 
+            int row = 0;
+            int column = 0;
             foreach (Producto p in prPag[CurrentProductPage])
             {
-                int row = 0;
-                int column = 0;
 
                 Viewbox v = new Viewbox();
                 v.Stretch = Stretch.Fill;
@@ -368,6 +344,48 @@ namespace TavernSkeep
                     column = 0;
                     row++;
                 }
+            }
+        }
+
+        private void Categoria_Click(object sender, RoutedEventArgs e)
+        {
+            Button boton = sender as Button;
+            Producto c = boton.Tag as Producto;
+            MessageBox.Show(c.Nombre);
+
+            List<Producto> listin = new List<Producto>();
+
+            int i = 0;
+            int total = 0;
+
+            foreach (Producto p in menuList)
+            {
+                // AQUI
+                if (p.Tipo_producto == c.Nombre)
+                {
+
+                    if (i <= 11)
+                    {
+                        listin.Add(p);
+                        i++;
+                    }
+                    else
+                    {
+                        prPag.Add(listin);
+                        listin = new List<Producto>();
+                        listin.Add(p);
+                        i = 0;
+                    }
+
+                    if (total + 1 == menuList.Count)
+                    {
+                        productsFromCategory.Add(listin);
+                        break;
+                    }
+                    total++;
+                }
+                else
+                    continue;
             }
         }
     }
