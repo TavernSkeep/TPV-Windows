@@ -528,12 +528,12 @@
                     <ColumnDefinition Width="10*"/>
                 </Grid.ColumnDefinitions>
                 <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Fill">
-                    <Button Cursor="cursors/hand.cur" Style="{StaticResource MyButtonStyle}">
+                    <Button Cursor="cursors/hand.cur" Style="{StaticResource MyButtonStyle}" Click="LessProducts">
                         <Image Source="/TavernSkeep;component/images/arrow_left.png" MaxWidth="300px"/>
                     </Button>
                 </Viewbox>
                 <Viewbox Grid.Column="3" Grid.Row="1" Stretch="Fill">
-                    <Button Cursor="cursors/hand.cur" Style="{StaticResource MyButtonStyle}">
+                    <Button Cursor="cursors/hand.cur" Style="{StaticResource MyButtonStyle}" Click="MoreProducts">
                         <Image Source="/TavernSkeep;component/images/arrow_right.png" MaxWidth="300px"/>
                     </Button>
                 </Viewbox>
