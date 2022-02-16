@@ -2,7 +2,9 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,13 +19,17 @@ using System.Windows.Threading;
 
 namespace TavernSkeep
 {
-    /// <summary>
-    /// Lógica de interacción para SkeepHub.xaml
-    /// </summary>
     public partial class SkeepHub : Window
     {
         RestClient client = new RestClient("http://localhost:8080");
+        List<List<Producto>> catPag = new List<List<Producto>>();
+        List<List<Producto>> prPag = new List<List<Producto>>();
+        List<List<Producto>> productsFromCategory = new List<List<Producto>>();
         List<Producto> prList = new List<Producto>();
+        List<Producto> catList = new List<Producto>();
+        List<Producto> menuList = new List<Producto>();
+        int CurrentCategoryPage = 0;
+        int CurrentProductPage = 0;
         public SkeepHub()
         {
             InitializeComponent();
@@ -34,48 +40,94 @@ namespace TavernSkeep
             Loading();
             startClock();
             ChargeProducts();
-            ShowProducts();
-        }
-
-        private void ShowProducts()
-        {
-            List<Viewbox> viewboxes = new List<Viewbox>();
-
-            foreach (Producto p in prList)
-            {
-                Viewbox v = new Viewbox();
-                Button b = new Button();
-                StackPanel s = new StackPanel();
-                Image i = new Image();
-                Label l = new Label();
-
-                //v.Child(b);
-                b.Content = s;
-                s.Children.Add(i);
-                s.Children.Add(l);
-            }
+            UpdateCategoryPage(catPag, CurrentCategoryPage);
+            UpdateProductPage(prPag, CurrentProductPage);
         }
 
         private void ChargeProducts()
         {
             var request = new RestRequest("/producto", Method.Get);
             var response = client.GetAsync(request);
-            //var lista = new List<Producto>();
             
             try
             {
                 if (!response.Result.Content.Equals("null"))
                 {
                     prList = JsonConvert.DeserializeObject<List<Producto>>(response.Result.Content);
-                    MessageBox.Show(prList[0].Nombre);
-                    //prList = lista;
                 }
-
+                else
+                    return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ha habido problemas conectando con la base de datos, compruebe su conexión.");
                 return;
+            }
+
+            foreach (Producto p in prList)
+            {
+
+                if (p.Es_categoria)
+                    catList.Add(p);
+                else
+                    menuList.Add(p);
+            }
+
+            List<Producto> listin = new List<Producto>();
+
+            int i = 0;
+            int total = 0;
+
+            foreach (Producto p in menuList)
+            {
+                
+                if (i <= 11)
+                {
+                    listin.Add(p);
+                    i++;
+                } else
+                {
+                    prPag.Add(listin);
+                    listin = new List<Producto>();
+                    listin.Add(p);
+                    i = 0;
+                }
+
+                if (total + 1 == menuList.Count)
+                {
+                    prPag.Add(listin);
+                    break;
+                }
+                total++;
+            }
+
+            listin = new List<Producto>();
+
+            i = 0;
+            total = 0;
+
+            foreach (Producto p in catList)
+            {
+
+                if (i <= 11)
+                {
+                    listin.Add(p);
+                    i++;
+                }
+                else
+                {
+                    catPag.Add(listin);
+                    listin = new List<Producto>();
+                    listin.Add(p);
+                    i = 0;
+                }
+
+                if (total + 1 == catList.Count)
+                {
+                    catPag.Add(listin);
+                    break;
+                }
+                total++;
             }
         }
 
@@ -134,6 +186,467 @@ namespace TavernSkeep
             admin MiVentana = new admin();
             MiVentana.Owner = this;
             MiVentana.ShowDialog();
+        }
+
+        private void MoreCategories(object sender, RoutedEventArgs e)
+        {
+            if (CurrentProductPage >= catPag.Count - 1)
+                return;
+            else
+            {
+                CurrentCategoryPage++;
+                UpdateCategoryPage(catPag, CurrentCategoryPage);
+            }
+        }
+
+        private void LessCategories(object sender, RoutedEventArgs e)
+        {
+            if (CurrentCategoryPage < 1)
+                return;
+            else
+            {
+                CurrentCategoryPage--;
+                UpdateCategoryPage(catPag, CurrentCategoryPage);
+            }
+        }
+
+        private void MoreProducts(object sender, RoutedEventArgs e)
+        {
+            if (CurrentProductPage >= prPag.Count - 1)
+                return;
+            else
+            {
+                CurrentProductPage++;
+                UpdateProductPage(prPag, CurrentProductPage);
+            }
+        }
+
+        private void LessProducts(object sender, RoutedEventArgs e)
+        {
+            if (CurrentProductPage < 1)
+                return;
+            else
+            {
+                CurrentProductPage--;
+                UpdateProductPage(prPag, CurrentProductPage);
+            }
+        }
+
+        private void UpdateCategoryPage(List<List<Producto>> list, int number)
+        {
+            gridProductos.Children.Clear();
+
+            int row = 0;
+            int column = 0;
+            foreach (Producto p in list[number])
+            {
+
+                Viewbox v = new Viewbox();
+                v.Stretch = Stretch.Fill;
+
+                Button b = new Button();
+
+                if (p.Nombre.Equals("Todo"))
+                    b.Click += Todo_Click;
+                else
+                    b.Click += Categoria_Click;
+
+                b.MouseEnter += b1_MouseEnter;
+                b.MouseLeave += b1_MouseLeave;
+                b.Tag = p;
+
+                StackPanel s = new StackPanel();
+                s.Orientation = Orientation.Vertical;
+
+
+                Image i = new Image();
+                i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
+                i.Width = 300;
+                i.Height = 300;
+
+                Label l = new Label();
+
+                l.FontWeight = FontWeights.Bold;
+                l.FontSize = 25;
+                l.BorderThickness = new Thickness(2);
+                l.BorderBrush = Brushes.Black;
+                l.Background = Brushes.LightGray;
+                l.HorizontalAlignment = HorizontalAlignment.Center;
+                l.Content = p.Nombre;
+
+
+                v.Child = b;
+                b.Content = s;
+                s.Children.Add(i);
+                s.Children.Add(l);
+
+                gridCategorias.Children.Add(v);
+
+                Grid.SetRow(v, row);
+                Grid.SetColumn(v, column);
+
+                column++;
+                if (column > 2)
+                {
+                    column = 0;
+                    row++;
+                }
+            }
+        }
+
+        private void UpdateProductPage(List<List<Producto>> list, int number)
+        {
+            gridProductos.Children.Clear();
+
+            int row = 0;
+            int column = 0;
+            foreach (Producto p in list[number])
+            {
+
+                Viewbox v = new Viewbox();
+                v.Stretch = Stretch.Fill;
+
+                Button b = new Button();
+                b.MouseEnter += b1_MouseEnter;
+                b.MouseLeave += b1_MouseLeave;
+
+                StackPanel s = new StackPanel();
+                s.Orientation = Orientation.Vertical;
+
+
+                Image i = new Image();
+                i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
+                i.Width = 300;
+                i.Height = 300;
+
+                Label l = new Label();
+
+                l.FontWeight = FontWeights.Bold;
+                l.FontSize = 25;
+                l.BorderThickness = new Thickness(2);
+                l.BorderBrush = Brushes.Black;
+                l.Background = Brushes.LightGray;
+                l.HorizontalAlignment = HorizontalAlignment.Center;
+                l.Content = p.Nombre;
+
+
+                v.Child = b;
+                b.Content = s;
+                s.Children.Add(i);
+                s.Children.Add(l);
+
+                gridProductos.Children.Add(v);
+
+                Grid.SetRow(v, row);
+                Grid.SetColumn(v, column);
+
+                column++;
+                if (column > 2)
+                {
+                    column = 0;
+                    row++;
+                }
+            }
+        }
+
+        private void Categoria_Click(object sender, RoutedEventArgs e)
+        {
+            productsFromCategory.Clear();
+
+            Button boton = sender as Button;
+            Producto c = boton.Tag as Producto;
+
+            List<Producto> catProducts = new List<Producto>();
+
+            int i = 0;
+            int total = 0;
+
+            foreach (Producto p in menuList)
+            {
+                if (p.Tipo_producto.Equals(c.Nombre))
+                {
+                    catProducts.Add(p);
+                }
+                else
+                    continue;
+            }
+
+            List<Producto> listin = new List<Producto>();
+
+            foreach (Producto p in catProducts)
+            {
+                if (i <= 11)
+                {
+                    listin.Add(p);
+
+                    i++;
+                }
+                else
+                {
+                    productsFromCategory.Add(listin);
+                    listin = new List<Producto>();
+                    listin.Add(p);
+                    i = 0;
+                }
+
+                if (total + 1 == catProducts.Count)
+                {
+                    productsFromCategory.Add(listin);
+                    break;
+                }
+                total++;
+            }
+
+            CurrentProductPage = 0;
+            UpdateProductPage(productsFromCategory, CurrentProductPage);
+        }
+
+        private void Todo_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentProductPage = 0;
+            UpdateProductPage(prPag, CurrentProductPage);
+        }
+
+
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            mesas MesasVentana = new mesas();
+            MesasVentana.Owner = this;
+            MesasVentana.ShowDialog();
+
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow login = new MainWindow();
+            login.Show();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            tickets ticketsVentana = new tickets();
+            ticketsVentana.Owner = this;
+            ticketsVentana.ShowDialog();
+        }
+
+        private void MoreCategories(object sender, RoutedEventArgs e)
+        {
+            if (CurrentProductPage >= catPag.Count - 1)
+                return;
+            else
+            {
+                CurrentCategoryPage++;
+                UpdateCategoryPage(catPag, CurrentCategoryPage);
+            }
+        }
+
+        private void LessCategories(object sender, RoutedEventArgs e)
+        {
+            if (CurrentCategoryPage < 1)
+                return;
+            else
+            {
+                CurrentCategoryPage--;
+                UpdateCategoryPage(catPag, CurrentCategoryPage);
+            }
+        }
+
+        private void MoreProducts(object sender, RoutedEventArgs e)
+        {
+            if (CurrentProductPage  >= prPag.Count - 1)
+                return;
+            else
+            {
+                CurrentProductPage++;
+                UpdateProductPage(prPag, CurrentProductPage);
+            }
+        }
+
+        private void LessProducts(object sender, RoutedEventArgs e)
+        {
+            if (CurrentProductPage < 1)
+                return;
+            else
+            {
+                CurrentProductPage--;
+                UpdateProductPage(prPag, CurrentProductPage);
+            }
+        }
+
+        private void UpdateCategoryPage(List<List<Producto>> list, int number)
+        {
+            gridProductos.Children.Clear();
+
+            int row = 0;
+            int column = 0;
+            foreach (Producto p in list[number])
+            {
+
+                Viewbox v = new Viewbox();
+                v.Stretch = Stretch.Fill;
+
+                Button b = new Button();
+
+                if (p.Nombre.Equals("Todo"))
+                    b.Click += Todo_Click;
+                else
+                    b.Click += Categoria_Click;
+
+                b.MouseEnter += b1_MouseEnter;
+                b.MouseLeave += b1_MouseLeave;
+                b.Tag = p;
+
+                StackPanel s = new StackPanel();
+                s.Orientation = Orientation.Vertical;
+
+
+                Image i = new Image();
+                i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
+                i.Width = 300;
+                i.Height = 300;
+
+                Label l = new Label();
+
+                l.FontWeight = FontWeights.Bold;
+                l.FontSize = 25;
+                l.BorderThickness = new Thickness(2);
+                l.BorderBrush = Brushes.Black;
+                l.Background = Brushes.LightGray;
+                l.HorizontalAlignment = HorizontalAlignment.Center;
+                l.Content = p.Nombre;
+
+
+                v.Child = b;
+                b.Content = s;
+                s.Children.Add(i);
+                s.Children.Add(l);
+
+                gridCategorias.Children.Add(v);
+
+                Grid.SetRow(v, row);
+                Grid.SetColumn(v, column);
+
+                column++;
+                if (column > 2)
+                {
+                    column = 0;
+                    row++;
+                }
+            }
+        }
+
+        private void UpdateProductPage(List<List<Producto>> list, int number)
+        {
+            gridProductos.Children.Clear();
+
+            int row = 0;
+            int column = 0;
+            foreach (Producto p in list[number])
+            {
+
+                Viewbox v = new Viewbox();
+                v.Stretch = Stretch.Fill;
+
+                Button b = new Button();
+                b.MouseEnter += b1_MouseEnter;
+                b.MouseLeave += b1_MouseLeave;
+
+                StackPanel s = new StackPanel();
+                s.Orientation = Orientation.Vertical;
+
+
+                Image i = new Image();
+                i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
+                i.Width = 300;
+                i.Height = 300;
+
+                Label l = new Label();
+
+                l.FontWeight = FontWeights.Bold;
+                l.FontSize = 25;
+                l.BorderThickness = new Thickness(2);
+                l.BorderBrush = Brushes.Black;
+                l.Background = Brushes.LightGray;
+                l.HorizontalAlignment = HorizontalAlignment.Center;
+                l.Content = p.Nombre;
+
+
+                v.Child = b;
+                b.Content = s;
+                s.Children.Add(i);
+                s.Children.Add(l);
+
+                gridProductos.Children.Add(v);
+
+                Grid.SetRow(v, row);
+                Grid.SetColumn(v, column);
+
+                column++;
+                if (column > 2)
+                {
+                    column = 0;
+                    row++;
+                }
+            }
+        }
+
+        private void Categoria_Click(object sender, RoutedEventArgs e)
+        {
+            productsFromCategory.Clear();
+
+            Button boton = sender as Button;
+            Producto c = boton.Tag as Producto;
+
+            List<Producto> catProducts = new List<Producto>();
+
+            int i = 0;
+            int total = 0;
+
+            foreach (Producto p in menuList)
+            {
+                if (p.Tipo_producto.Equals(c.Nombre))
+                {
+                    catProducts.Add(p);
+                }
+                else
+                    continue;
+            }
+
+            List<Producto> listin = new List<Producto>();
+
+            foreach (Producto p in catProducts)
+            {
+                if (i <= 11)
+                {
+                    listin.Add(p);
+
+                    i++;
+                }
+                else
+                {
+                    productsFromCategory.Add(listin);
+                    listin = new List<Producto>();
+                    listin.Add(p);
+                    i = 0;
+                }
+
+                if (total + 1 == catProducts.Count)
+                {
+                    productsFromCategory.Add(listin);
+                    break;
+                }
+                total++;
+            }
+
+            CurrentProductPage = 0;
+            UpdateProductPage(productsFromCategory, CurrentProductPage);
+        }
+
+        private void Todo_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentProductPage = 0;
+            UpdateProductPage(prPag, CurrentProductPage);
         }
 
         private void button5_Click(object sender, RoutedEventArgs e)

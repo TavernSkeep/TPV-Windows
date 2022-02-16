@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:TavernSkeep"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="FontFamily" Value="/TavernSkeep;component/font/#Arcade N" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
