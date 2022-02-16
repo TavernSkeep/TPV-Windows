@@ -19,9 +19,6 @@ using System.Windows.Threading;
 
 namespace TavernSkeep
 {
-    /// <summary>
-    /// Lógica de interacción para SkeepHub.xaml
-    /// </summary>
     public partial class SkeepHub : Window
     {
         RestClient client = new RestClient("http://localhost:8080");
@@ -44,7 +41,7 @@ namespace TavernSkeep
             startClock();
             ChargeProducts();
             UpdateCategoryPage(catPag, CurrentCategoryPage);
-            UpdateProductPage(CurrentProductPage);
+            UpdateProductPage(prPag, CurrentProductPage);
         }
 
         private void ChargeProducts()
@@ -198,7 +195,7 @@ namespace TavernSkeep
             else
             {
                 CurrentCategoryPage++;
-                UpdateCategoryPage(CurrentCategoryPage);
+                UpdateCategoryPage(catPag, CurrentCategoryPage);
             }
         }
 
@@ -209,7 +206,7 @@ namespace TavernSkeep
             else
             {
                 CurrentCategoryPage--;
-                UpdateCategoryPage(CurrentCategoryPage);
+                UpdateCategoryPage(catPag, CurrentCategoryPage);
             }
         }
 
@@ -220,7 +217,7 @@ namespace TavernSkeep
             else
             {
                 CurrentProductPage++;
-                UpdateProductPage(CurrentProductPage);
+                UpdateProductPage(prPag, CurrentProductPage);
             }
         }
 
@@ -231,24 +228,29 @@ namespace TavernSkeep
             else
             {
                 CurrentProductPage--;
-                UpdateProductPage(CurrentProductPage);
+                UpdateProductPage(prPag, CurrentProductPage);
             }
         }
 
-        private void UpdateCategoryPage(List<Producto> list, int number)
+        private void UpdateCategoryPage(List<List<Producto>> list, int number)
         {
             gridProductos.Children.Clear();
 
             int row = 0;
             int column = 0;
-            foreach (Producto p in catPag[CurrentCategoryPage])
+            foreach (Producto p in list[number])
             {
 
                 Viewbox v = new Viewbox();
                 v.Stretch = Stretch.Fill;
 
                 Button b = new Button();
-                b.Click += Categoria_Click;
+
+                if (p.Nombre.Equals("Todo"))
+                    b.Click += Todo_Click;
+                else
+                    b.Click += Categoria_Click;
+
                 b.MouseEnter += b1_MouseEnter;
                 b.MouseLeave += b1_MouseLeave;
                 b.Tag = p;
@@ -292,13 +294,13 @@ namespace TavernSkeep
             }
         }
 
-        private void UpdateProductPage(List<Producto> list, int number)
+        private void UpdateProductPage(List<List<Producto>> list, int number)
         {
             gridProductos.Children.Clear();
 
             int row = 0;
             int column = 0;
-            foreach (Producto p in prPag[CurrentProductPage])
+            foreach (Producto p in list[number])
             {
 
                 Viewbox v = new Viewbox();
@@ -349,9 +351,10 @@ namespace TavernSkeep
 
         private void Categoria_Click(object sender, RoutedEventArgs e)
         {
+            productsFromCategory.Clear();
+
             Button boton = sender as Button;
             Producto c = boton.Tag as Producto;
-            MessageBox.Show(c.Nombre);
 
             List<Producto> catProducts = new List<Producto>();
 
@@ -360,7 +363,6 @@ namespace TavernSkeep
 
             foreach (Producto p in menuList)
             {
-                // AQUI
                 if (p.Tipo_producto.Equals(c.Nombre))
                 {
                     catProducts.Add(p);
@@ -394,6 +396,15 @@ namespace TavernSkeep
                 }
                 total++;
             }
+
+            CurrentProductPage = 0;
+            UpdateProductPage(productsFromCategory, CurrentProductPage);
+        }
+
+        private void Todo_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentProductPage = 0;
+            UpdateProductPage(prPag, CurrentProductPage);
         }
     }
 }
