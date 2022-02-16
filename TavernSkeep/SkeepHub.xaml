@@ -51,13 +51,13 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="186*"/>
-                <RowDefinition Height="187*"/>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="31*"/>
-                <RowDefinition Height="34*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="20*"/>
             </Grid.RowDefinitions>
 
-            <Image Stretch="Fill" Source="/TavernSkeep;component/images/pergamino.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0" Grid.RowSpan="2" Grid.Row="1" RenderOptions.BitmapScalingMode="HighQuality" Grid.ColumnSpan="1" ></Image>
+            <Image Stretch="Fill" Source="/TavernSkeep;component/images/pergamino.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0" Grid.RowSpan="2" Grid.Row="1" RenderOptions.BitmapScalingMode="HighQuality" Grid.ColumnSpan="2" ></Image>
             <Image Source="/TavernSkeep;component/images/menu_horizontal_largo.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="3" Grid.RowSpan="4" RenderOptions.BitmapScalingMode="HighQuality" Grid.ColumnSpan="1"/>
             <Viewbox Stretch="Fill" Grid.Column="2" Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="5">
                 <Viewbox.OpacityMask>
@@ -626,6 +626,15 @@
                 <Viewbox Grid.Column="3" Grid.Row="1">
                     <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="datetpv" FontSize="13px" HorizontalAlignment="Center"  Text="Date" VerticalAlignment="Center" Foreground="White"/>
                 </Viewbox>
+                
+                <Viewbox Grid.Column="5" Grid.Row="1">
+                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="nametpv" FontSize="13px" HorizontalAlignment="Center"  Text="NAME" VerticalAlignment="Center" Foreground="White"/>
+                </Viewbox>
+
+                <Viewbox Grid.Column="7" Grid.Row="1">
+                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="puestotpv" FontSize="13px" HorizontalAlignment="Center"  Text="Puesto" VerticalAlignment="Center" Foreground="White"/>
+                </Viewbox>
+
             </Grid>
             <Grid Grid.Column="7" Grid.Row="2" Grid.RowSpan="3">
 
