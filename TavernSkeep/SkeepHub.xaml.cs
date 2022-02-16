@@ -135,5 +135,27 @@ namespace TavernSkeep
             MiVentana.Owner = this;
             MiVentana.ShowDialog();
         }
+
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            mesas MesasVentana = new mesas();
+            MesasVentana.Owner = this;
+            MesasVentana.ShowDialog();
+            
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow login = new MainWindow();
+            login.Show();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            tickets ticketsVentana = new tickets();
+            ticketsVentana.Owner = this;
+            ticketsVentana.ShowDialog();
+        }
     }
 }

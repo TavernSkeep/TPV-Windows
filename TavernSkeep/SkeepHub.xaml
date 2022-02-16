@@ -439,9 +439,70 @@
                             </Style>
                         </Button.Style>
                     </Button>
+
+                    <Button Width="auto" Content="DESCUENTO" Height="auto" Foreground="White" FontSize="11px" FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="3" Grid.Row="2">
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Grid>
+                                                <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                                <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <Button Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="3" Grid.Row="3" Grid.RowSpan="2">
+                        <TextBlock FontSize="12">BORRAR<LineBreak/>LINEA</TextBlock>
+                        <Button.Style >
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Grid>
+                                                <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                                <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    
                 </Grid>
             </Viewbox>
 
+            
+           
+            
             <Viewbox Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="2" Stretch="Fill" Margin="5,5,5,5">
                 <Grid Width="auto" Height="auto" x:Name="gridCategorias">
                     <Grid.RowDefinitions>
@@ -724,8 +785,8 @@
                 </Viewbox>
 
                 <Viewbox Grid.Column="1" Grid.Row="4">
-                    <Button Content="BOTON 1" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="button3" ClickMode="Press" UseLayoutRounding="True" FontSize="30">
+                    <Button Content="TIKETS" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          x:Name="button3" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="button3_Click">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">
@@ -754,8 +815,9 @@
                 </Viewbox>
 
                 <Viewbox Grid.Column="1" Grid.Row="6">
-                    <Button Content="BOTON 1" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="button4" ClickMode="Press" UseLayoutRounding="True" FontSize="30">
+                    <Button  Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          x:Name="button4" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="button4_Click">
+                        <TextBlock>CERRAR<LineBreak/>SESION</TextBlock>
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">
@@ -784,8 +846,8 @@
                 </Viewbox>
 
                 <Viewbox Grid.Column="1" Grid.Row="8">
-                    <Button Content="BOTON 1" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="button5" ClickMode="Press" UseLayoutRounding="True" FontSize="30">
+                    <Button Content="Mesas" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          x:Name="button5" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="button5_Click">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">
