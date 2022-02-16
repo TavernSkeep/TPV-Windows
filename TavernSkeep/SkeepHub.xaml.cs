@@ -43,7 +43,7 @@ namespace TavernSkeep
             Loading();
             startClock();
             ChargeProducts();
-            UpdateCategoryPage(CurrentCategoryPage);
+            UpdateCategoryPage(catPag, CurrentCategoryPage);
             UpdateProductPage(CurrentProductPage);
         }
 
@@ -235,7 +235,7 @@ namespace TavernSkeep
             }
         }
 
-        private void UpdateCategoryPage(int number)
+        private void UpdateCategoryPage(List<Producto> list, int number)
         {
             gridProductos.Children.Clear();
 
@@ -292,7 +292,7 @@ namespace TavernSkeep
             }
         }
 
-        private void UpdateProductPage(int number)
+        private void UpdateProductPage(List<Producto> list, int number)
         {
             gridProductos.Children.Clear();
 
@@ -353,7 +353,7 @@ namespace TavernSkeep
             Producto c = boton.Tag as Producto;
             MessageBox.Show(c.Nombre);
 
-            List<Producto> listin = new List<Producto>();
+            List<Producto> catProducts = new List<Producto>();
 
             int i = 0;
             int total = 0;
@@ -361,31 +361,38 @@ namespace TavernSkeep
             foreach (Producto p in menuList)
             {
                 // AQUI
-                if (p.Tipo_producto == c.Nombre)
+                if (p.Tipo_producto.Equals(c.Nombre))
                 {
-
-                    if (i <= 11)
-                    {
-                        listin.Add(p);
-                        i++;
-                    }
-                    else
-                    {
-                        prPag.Add(listin);
-                        listin = new List<Producto>();
-                        listin.Add(p);
-                        i = 0;
-                    }
-
-                    if (total + 1 == menuList.Count)
-                    {
-                        productsFromCategory.Add(listin);
-                        break;
-                    }
-                    total++;
+                    catProducts.Add(p);
                 }
                 else
                     continue;
+            }
+
+            List<Producto> listin = new List<Producto>();
+
+            foreach (Producto p in catProducts)
+            {
+                if (i <= 11)
+                {
+                    listin.Add(p);
+
+                    i++;
+                }
+                else
+                {
+                    productsFromCategory.Add(listin);
+                    listin = new List<Producto>();
+                    listin.Add(p);
+                    i = 0;
+                }
+
+                if (total + 1 == catProducts.Count)
+                {
+                    productsFromCategory.Add(listin);
+                    break;
+                }
+                total++;
             }
         }
     }
