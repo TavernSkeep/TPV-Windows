@@ -69,6 +69,7 @@
                     <RowDefinition Height="80*"/>
                     <RowDefinition Height="16*"/>
                 </Grid.RowDefinitions>
+                <ListBox Grid.Row="1" Grid.Column="1" x:Name="listticket" Background="{x:Null}"/>
             </Grid>
             <Image Source="/TavernSkeep;component/images/menu_horizontal_largo.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="3" Grid.RowSpan="4" RenderOptions.BitmapScalingMode="HighQuality" Grid.ColumnSpan="1"/>
             <Viewbox Stretch="Fill" Grid.Column="2" Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="5">
