@@ -426,7 +426,24 @@ namespace TavernSkeep
 
         private void Product_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Amogus Click");
+            Button b = sender as Button;
+            Producto p = b.Tag as Producto;
+
+            foreach (LineaTicket lt in ListTicket.Items)
+            {
+                if (lt.Nombre.Equals(p.Nombre))
+                {
+                    lt.Cantidad = lt.Cantidad + 1;
+                    lt.PrecioTotal = lt.Cantidad * lt.PrecioUnidad;
+                    int indice = ListTicket.Items.IndexOf(lt);
+                    ListTicket.Items.RemoveAt(indice);
+                    ListTicket.Items.Insert(indice, lt);
+                    return;
+                }
+            }
+
+            ListTicket.Items.Add(new LineaTicket { Nombre = p.Nombre, Cantidad = 1, PrecioUnidad = p.Precio, PrecioTotal = p.Precio});
+
         }
 
         private void Product_RightClick(object sender, RoutedEventArgs e)
@@ -456,6 +473,31 @@ namespace TavernSkeep
             tickets ticketsVentana = new tickets();
             ticketsVentana.Owner = this;
             ticketsVentana.ShowDialog();
+        }
+
+        private void BorrarLinea_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (ListTicket.SelectedItems.Count < 1)
+                return;
+
+            List<int> kill = new List<int>();
+
+            foreach(LineaTicket lt in ListTicket.SelectedItems)
+            {
+                kill.Add(ListTicket.Items.IndexOf(lt));
+            }
+
+            foreach(int i in kill)
+            {
+                ListTicket.Items.RemoveAt(i);
+            }
+            /*
+            if (ListTicket.SelectedItem != null)
+                ListTicket.Items.RemoveAt(ListTicket.Items.IndexOf(ListTicket.SelectedItem));
+            else
+                return;
+            */
         }
     }
 }

@@ -69,7 +69,16 @@
                     <RowDefinition Height="80*"/>
                     <RowDefinition Height="16*"/>
                 </Grid.RowDefinitions>
-                <ListBox Grid.Row="1" Grid.Column="1" x:Name="listticket" Background="{x:Null}"/>
+                <ListView Grid.Row="1" Grid.Column="1" x:Name="ListTicket" Background="{x:Null}" FontSize="12">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="125px"/>
+                            <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Cantidad}" Width="60px"/>
+                            <GridViewColumn Header="P/u" DisplayMemberBinding="{Binding PrecioUnidad}" Width="35px"/>
+                            <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding PrecioTotal}" Width="55px"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </Grid>
             <Image Source="/TavernSkeep;component/images/menu_horizontal_largo.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="3" Grid.RowSpan="4" RenderOptions.BitmapScalingMode="HighQuality" Grid.ColumnSpan="1"/>
             <Viewbox Stretch="Fill" Grid.Column="2" Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="5">
@@ -482,7 +491,7 @@
                     </Button>
 
                     <Button Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="3" Grid.Row="3" Grid.RowSpan="2">
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="3" Grid.Row="3" Grid.RowSpan="2" Click="BorrarLinea_Click">
                         <TextBlock FontSize="12">BORRAR<LineBreak/>LINEA</TextBlock>
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
