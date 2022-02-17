@@ -186,6 +186,9 @@
     <Compile Include="admin.xaml.cs">
       <DependentUpon>admin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="descuento.xaml.cs">
+      <DependentUpon>descuento.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Empleado.cs" />
     <Compile Include="LineaTicket.cs" />
     <Compile Include="mesas.xaml.cs">
@@ -202,6 +205,10 @@
       <DependentUpon>tickets.xaml</DependentUpon>
     </Compile>
     <Page Include="admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="descuento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

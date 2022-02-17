@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TavernSkeep"
         mc:Ignorable="d"
-        Title="tickets" Height="450" Width="800">
+        Title="Tickets" Height="450" Width="800"
+        ResizeMode="NoResize">
 
     <Grid>
         <Grid.Background>

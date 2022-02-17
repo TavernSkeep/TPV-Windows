@@ -1,0 +1,374 @@
+﻿<Window x:Class="TavernSkeep.descuento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TavernSkeep"
+        mc:Ignorable="d"
+        Title="Descuento" Height="400" Width="300"
+        ResizeMode="NoResize">
+    <Grid>
+        <Image Source="/TavernSkeep;component/images/menu_horizontal_largo.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Viewbox Stretch="Fill" Margin="10,10,10,10">
+            <Grid Width="auto" Height="auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="/TavernSkeep;component/images/calc_bar.png" Grid.ColumnSpan="4"/>
+                <Grid Width="auto" Height="auto" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="80*"/>
+                        <RowDefinition Height="15*"/>
+                    </Grid.RowDefinitions>
+                    <Viewbox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+                        <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="descuentocalc" FontSize="13px" Text="" Foreground="White"/>
+                    </Viewbox>
+                </Grid>
+
+                <Button Content="1" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Row="1" Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="2" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="1" Grid.Row="1"  Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="3" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="2" Grid.Row="1"  Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="4" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Row="2"  Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="5" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="1" Grid.Row="2"  Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="6" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="2" Grid.Row="2"  Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="7" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="0" Grid.Row="3"  Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="8" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="1" Grid.Row="3"  Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="9" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="2" Grid.Row="3"  Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="0" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="1" Grid.Row="4"  Click="Button_Click">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="C" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="0" Grid.Row="4" Click="Button_Click_1">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="OK" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="2" Grid.Row="4" Click="Button_Click_2">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton_focus.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton.png"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </Grid>
+        </Viewbox>
+
+    </Grid>
+</Window>

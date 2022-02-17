@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TavernSkeep"
         mc:Ignorable="d"
-        Title="Mesas" Height="450" Width="800">
+        Title="Mesas" Height="450" Width="800"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/TavernSkeep;component/images/menu_horizontal_largo.png"/>

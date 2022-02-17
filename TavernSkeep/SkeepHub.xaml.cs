@@ -478,26 +478,25 @@ namespace TavernSkeep
         private void BorrarLinea_Click(object sender, RoutedEventArgs e)
         {
 
-            if (ListTicket.SelectedItems.Count < 1)
-                return;
-
-            List<int> kill = new List<int>();
-
-            foreach(LineaTicket lt in ListTicket.SelectedItems)
-            {
-                kill.Add(ListTicket.Items.IndexOf(lt));
-            }
-
-            foreach(int i in kill)
-            {
-                ListTicket.Items.RemoveAt(i);
-            }
-            /*
+            
             if (ListTicket.SelectedItem != null)
                 ListTicket.Items.RemoveAt(ListTicket.Items.IndexOf(ListTicket.SelectedItem));
             else
                 return;
-            */
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            descuento ventanadescuento = new descuento();
+            ventanadescuento.Owner = this;
+            ventanadescuento.ShowDialog();
+
+        }
+
+        private void Borrar_Click(object sender, RoutedEventArgs e)
+        {
+            ListTicket.Items.Clear();
         }
     }
 }
