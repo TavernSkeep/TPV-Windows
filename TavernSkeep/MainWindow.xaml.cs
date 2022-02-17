@@ -18,12 +18,10 @@ using RestSharp;
 
 namespace TavernSkeep
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         RestClient client = new RestClient("http://localhost:8080");
+        Empleado emp1;
         //static Cursor sword = new Cursor(Application.GetResourceStream(new Uri("sword.cur")).Stream);
         public MainWindow()
         {
@@ -33,15 +31,7 @@ namespace TavernSkeep
             this.Cursor = cursor;
             //Mouse.OverrideCursor = sword;
             Console.WriteLine("Always skeep = true");
-            //Hola
         }
-
-        /*
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var request = new RestRequest("/empleado", Method.Post);
-            res.ExecutePostAsync(request);
-        }*/
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -50,7 +40,7 @@ namespace TavernSkeep
             var request = new RestRequest(id, Method.Get);
             var response = client.GetAsync(request);
             //JObject json = JObject.Parse(response.Result.Content);
-            Empleado emp1 = new Empleado();
+            emp1 = new Empleado();
             try
             {
                 if (!response.Result.Content.Equals("null"))
@@ -84,7 +74,7 @@ namespace TavernSkeep
             else if (emp1.Dni.Equals(dni.Text) && emp1.Contraseña.Equals(contraseña1.Text))
             {
                 this.Hide();
-                SkeepHub a = new SkeepHub();
+                SkeepHub a = new SkeepHub(emp1);
                 a.WindowState = this.WindowState;
                 a.Show();
                 this.Close();

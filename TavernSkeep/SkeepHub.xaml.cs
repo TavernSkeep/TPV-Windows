@@ -30,9 +30,11 @@ namespace TavernSkeep
         List<Producto> menuList = new List<Producto>();
         int CurrentCategoryPage = 0;
         int CurrentProductPage = 0;
-        public SkeepHub()
+        public SkeepHub(Empleado emp)
         {
             InitializeComponent();
+            nametpv.Text = emp.Nombre;
+            puestotpv.Text = emp.Puesto;
             this.Cursor = Cursors.None;
             Cursor cursor = new Cursor(Application.GetResourceStream(new Uri("cursors/sword.cur", UriKind.Relative)).Stream);
             this.Cursor = cursor;
@@ -255,6 +257,10 @@ namespace TavernSkeep
                 b.MouseLeave += b1_MouseLeave;
                 b.Tag = p;
 
+                b.BorderThickness = new Thickness(2);
+                b.BorderBrush = Brushes.White;
+                b.Background = Brushes.Transparent;
+
                 StackPanel s = new StackPanel();
                 s.Orientation = Orientation.Vertical;
 
@@ -298,8 +304,12 @@ namespace TavernSkeep
         {
             gridProductos.Children.Clear();
 
+            if (list.Count < 1)
+                return;
+
             int row = 0;
             int column = 0;
+
             foreach (Producto p in list[number])
             {
 
@@ -307,8 +317,15 @@ namespace TavernSkeep
                 v.Stretch = Stretch.Fill;
 
                 Button b = new Button();
+                b.Tag = p;
                 b.MouseEnter += b1_MouseEnter;
                 b.MouseLeave += b1_MouseLeave;
+                b.Click += Product_Click;
+                b.MouseRightButtonDown += Product_RightClick;
+
+                b.BorderThickness = new Thickness(2);
+                b.BorderBrush = Brushes.White;
+                b.Background = Brushes.Transparent;
 
                 StackPanel s = new StackPanel();
                 s.Orientation = Orientation.Vertical;
@@ -405,6 +422,18 @@ namespace TavernSkeep
         {
             CurrentProductPage = 0;
             UpdateProductPage(prPag, CurrentProductPage);
+        }
+
+        private void Product_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Amogus Click");
+        }
+
+        private void Product_RightClick(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            ProductPreview preview = new ProductPreview(b.Tag as Producto);
+            preview.ShowDialog();
         }
 
         private void button5_Click(object sender, RoutedEventArgs e)

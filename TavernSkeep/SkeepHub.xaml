@@ -516,14 +516,6 @@
                         <ColumnDefinition Width="33"/>
                         <ColumnDefinition Width="33"/>
                     </Grid.ColumnDefinitions>
-                    <Viewbox Stretch="Fill">
-                        <Button MouseEnter="b1_MouseEnter" MouseLeave="b1_MouseLeave" Style="{StaticResource MyButtonStyle}" Cursor="cursors/hand.cur">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="/TavernSkeep;component/images/ramen.jpg" MaxWidth="300px"/>
-                                <Label Content="RAMEN" FontWeight="Bold" FontSize="30px" Background="LightGray" BorderBrush="Black" BorderThickness="2px" HorizontalAlignment="Center" FontFamily="/TavernSkeep;component/font/#Arcade N"/>
-                            </StackPanel>
-                        </Button>
-                    </Viewbox>
 
                 </Grid>
             </Viewbox>
@@ -626,12 +618,16 @@
                 <Viewbox Grid.Column="3" Grid.Row="1">
                     <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="datetpv" FontSize="13px" HorizontalAlignment="Center"  Text="Date" VerticalAlignment="Center" Foreground="White"/>
                 </Viewbox>
-                
+
                 <Viewbox Grid.Column="5" Grid.Row="1">
-                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="nametpv" FontSize="13px" HorizontalAlignment="Center"  Text="NAME" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="taverntpv" FontSize="13px" HorizontalAlignment="Center"  Text="TavernSkeep" VerticalAlignment="Center" Foreground="White"/>
                 </Viewbox>
 
                 <Viewbox Grid.Column="7" Grid.Row="1">
+                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="nametpv" FontSize="13px" HorizontalAlignment="Center"  Text="NAME" VerticalAlignment="Center" Foreground="White"/>
+                </Viewbox>
+
+                <Viewbox Grid.Column="9" Grid.Row="1">
                     <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="puestotpv" FontSize="13px" HorizontalAlignment="Center"  Text="Puesto" VerticalAlignment="Center" Foreground="White"/>
                 </Viewbox>
 
