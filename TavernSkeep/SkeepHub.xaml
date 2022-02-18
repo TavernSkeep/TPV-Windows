@@ -74,7 +74,12 @@
                     <RowDefinition Height="16*"/>
                 </Grid.RowDefinitions>
                 <Viewbox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top">
-                    <ListView  x:Name="ListTicket" Background="{x:Null}" FontSize="12" SelectionMode="Single" >
+                    <ListView  x:Name="ListTicket" Background="{x:Null}" FontSize="12" SelectionMode="Single">
+                        <ListView.Resources>
+                            <Style TargetType="GridViewColumnHeader">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Style>
+                        </ListView.Resources>
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="125px"/>
@@ -163,7 +168,7 @@
                     </Button>
 
                     <Button Width="auto" Content="DESCUENTO" Height="auto" Foreground="White" FontSize="11px" FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="0" Grid.Row="1" Click="Button_Click">
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="0" Grid.Row="1" Click="Descuento_Click">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">

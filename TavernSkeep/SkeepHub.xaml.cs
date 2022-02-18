@@ -2,6 +2,7 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Drawing.Text;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -30,6 +31,7 @@ namespace TavernSkeep
         List<Producto> menuList = new List<Producto>();
         int CurrentCategoryPage = 0;
         int CurrentProductPage = 0;
+        double totaldescuento = 0;
         public SkeepHub(Empleado emp)
         {
             InitializeComponent();
@@ -44,6 +46,7 @@ namespace TavernSkeep
             ChargeProducts();
             UpdateCategoryPage(catPag, CurrentCategoryPage);
             UpdateProductPage(prPag, CurrentProductPage);
+            ((INotifyCollectionChanged)ListTicket.Items).CollectionChanged += ListView_CollectionChanged;
         }
 
         private void ChargeProducts()
@@ -441,9 +444,7 @@ namespace TavernSkeep
                     return;
                 }
             }
-
             ListTicket.Items.Add(new LineaTicket { Nombre = p.Nombre, Cantidad = 1, PrecioUnidad = p.Precio, PrecioTotal = p.Precio});
-
         }
 
         private void Product_RightClick(object sender, RoutedEventArgs e)
@@ -477,8 +478,6 @@ namespace TavernSkeep
 
         private void BorrarLinea_Click(object sender, RoutedEventArgs e)
         {
-
-            
             if (ListTicket.SelectedItem != null)
                 ListTicket.Items.RemoveAt(ListTicket.Items.IndexOf(ListTicket.SelectedItem));
             else
@@ -486,17 +485,46 @@ namespace TavernSkeep
             
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Descuento_Click(object sender, RoutedEventArgs e)
         {
-            descuento ventanadescuento = new descuento();
-            ventanadescuento.Owner = this;
-            ventanadescuento.ShowDialog();
+            foreach (LineaTicket lt in ListTicket.Items)
+            {
+                if (lt.Nombre.Equals("Descuento"))
+                {
+                    MessageBox.Show("Se ha llegado al límite de códigos de descuento. Aquí no se come gratis tontito.");
+                    return;
+                }
+            }
 
+            descuento ventanadescuento = new descuento(Convert.ToDouble(preciototal.Text));
+            ventanadescuento.Owner = this;
+
+            if (ventanadescuento.ShowDialog() == false)
+                totaldescuento = ventanadescuento.totaldescuento;
+
+            if (totaldescuento == 0)
+                return;
+
+            ListTicket.Items.Add(new LineaTicket { Nombre = "Descuento", Cantidad = 1, PrecioUnidad = -totaldescuento, PrecioTotal = -totaldescuento });
         }
 
         private void Borrar_Click(object sender, RoutedEventArgs e)
         {
             ListTicket.Items.Clear();
+        }
+
+        private void ListView_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add || e.Action == NotifyCollectionChangedAction.Remove || e.Action == NotifyCollectionChangedAction.Reset)
+            {
+                double total = 0;
+
+                foreach (LineaTicket lt in ListTicket.Items)
+                {
+                    total += lt.PrecioTotal;
+                }
+                preciototal.Text = total.ToString();
+            }
         }
     }
 }
