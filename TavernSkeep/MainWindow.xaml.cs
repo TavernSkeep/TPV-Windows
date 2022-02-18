@@ -52,7 +52,6 @@ namespace TavernSkeep
                 MessageBox.Show("Ha habido problemas conectando con la base de datos, compruebe su conexión.");
                 return;
             }
-            
 
             if (dni.Text.Equals(null) || dni.Text.Equals("") || dni.Text.Contains(" "))
             {

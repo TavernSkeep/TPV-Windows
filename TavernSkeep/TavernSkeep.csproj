@@ -191,6 +191,7 @@
     </Compile>
     <Compile Include="Empleado.cs" />
     <Compile Include="LineaTicket.cs" />
+    <Compile Include="Mesa.cs" />
     <Compile Include="mesas.xaml.cs">
       <DependentUpon>mesas.xaml</DependentUpon>
     </Compile>

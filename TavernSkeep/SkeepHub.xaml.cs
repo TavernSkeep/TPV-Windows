@@ -333,7 +333,6 @@ namespace TavernSkeep
                 StackPanel s = new StackPanel();
                 s.Orientation = Orientation.Vertical;
 
-
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
                 i.Width = 300;
@@ -454,9 +453,9 @@ namespace TavernSkeep
             preview.ShowDialog();
         }
 
-        private void button5_Click(object sender, RoutedEventArgs e)
+        private void Mesas_Click(object sender, RoutedEventArgs e)
         {
-            mesas MesasVentana = new mesas();
+            mesas MesasVentana = new mesas(ListTicket);
             MesasVentana.Owner = this;
             MesasVentana.ShowDialog();
             
@@ -525,6 +524,15 @@ namespace TavernSkeep
                 }
                 preciototal.Text = total.ToString();
             }
+        }
+
+        private void Cobrar_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListTicket.Items.Count < 1)
+            {
+                MessageBox.Show("No hay ítems que cobrar");
+                return;
+            }      
         }
     }
 }

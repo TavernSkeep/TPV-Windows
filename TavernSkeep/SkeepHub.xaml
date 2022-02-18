@@ -140,7 +140,7 @@
                         </Viewbox>
                     </Grid>
                     <Button Content="Cobrar" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="1" Grid.Row="1">
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="1" Grid.Row="1" Click="Cobrar_Click">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">
@@ -470,7 +470,7 @@
 
                 <Viewbox Grid.Column="1" Grid.Row="2">
                     <Button Content="Mesas" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="button5" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="button5_Click">
+                          x:Name="button5" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="Mesas_Click">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">
