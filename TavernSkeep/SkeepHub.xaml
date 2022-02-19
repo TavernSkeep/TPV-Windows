@@ -408,8 +408,8 @@
                 </Grid.RowDefinitions>
 
                 <Viewbox Grid.Column="1" Grid.Row="4">
-                    <Button Content="TIKETS" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="button3" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="button3_Click">
+                    <Button Content="TICKETS" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          x:Name="button3" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="Tickets_Click">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">

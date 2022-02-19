@@ -158,7 +158,7 @@ namespace TavernSkeep
             {
                 Random rand = new Random();
                 Ticket tick = new Ticket();
-                tick.Id = "t" + rand.Next();
+                tick.Id = "T" + rand.Next();
                 tick.Codigo = tick.Id;
                 tick.Mesa = m.Codigo;
                 
@@ -184,6 +184,9 @@ namespace TavernSkeep
 
             else
             {
+
+                // Método para coger el ticket actual de la mesa y devolverlo a la pantalla principal
+
                 string id = "/ticket/" + m.Ticket_actual;
 
                 var request = new RestRequest(id, Method.Get);

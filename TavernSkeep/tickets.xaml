@@ -13,12 +13,11 @@
             <ImageBrush ImageSource="/TavernSkeep;component/images/menu_horizontal_largo.png"/>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="10*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
@@ -26,31 +25,139 @@
             <ColumnDefinition Width="60*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <Viewbox Grid.Row="1" Grid.Column="2">
-            <TextBox x:Name="dni" Width="auto" Height="auto" TextAlignment="Center" MinHeight="120px" MinWidth="1000px" VerticalAlignment="Center">
-                <TextBox.Style>
-                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                        <Style.Resources>
-                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
-                                <VisualBrush.Visual>
-                                    <Label Content="CODIGO TICKET" Foreground="LightGray" FontSize="60"  FontFamily="/TavernSkeep;component/font/#Arcade N" />
-                                </VisualBrush.Visual>
-                            </VisualBrush>
-                        </Style.Resources>
-                        <Style.Triggers>
-                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                            </Trigger>
-                            <Trigger Property="Text" Value="{x:Null}">
-                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                            </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter Property="Background" Value="White" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBox.Style>
-            </TextBox>
+        <Viewbox Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="CodigoTicket" Width="auto" Height="auto" TextAlignment="Left" MinHeight="120px" MinWidth="1000px" VerticalAlignment="Center" FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="60" MaxLength="20">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="CODIGO TICKET" Foreground="LightGray" FontSize="60"  FontFamily="/TavernSkeep;component/font/#Arcade N" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                <Button Width="auto" Content="Buscar Ticket" Height="auto" Foreground="White" FontFamily="/TavernSkeep;component/font/#Arcade N"
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="0" Grid.Row="1" Click="BuscarTicket_Click" FontSize="60">
+                    <Button.Style >
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image 
+                                            x:Name="buttonImage" Stretch="Fill"
+                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
         </Viewbox>
-    </Grid>
+        <Grid x:Name="GridTickets" Grid.Column="1" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="158*"/>
+                <ColumnDefinition Width="38*"/>
+                <ColumnDefinition Width="37*"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+        <ListView x:Name="AllTickets" Grid.Column="1" Grid.Row="2" Background="Transparent" Foreground="Gold" FontWeight="Black" SelectionMode="Single" SelectionChanged="AllTickets_SelectionChanged" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="Gold"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Codigo" DisplayMemberBinding="{Binding Codigo}" Width="125px"/>
+                    <GridViewColumn Header="Mesa" DisplayMemberBinding="{Binding Mesa}" Width="60px"/>
+                    <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding Fecha}" Width="100px"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Image Stretch="Fill" Source="/TavernSkeep;component/images/pergamino.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="2" Grid.RowSpan="2" Grid.Row="1" RenderOptions.BitmapScalingMode="HighQuality" Grid.ColumnSpan="2" ></Image>
+        <Grid Grid.Column="2" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="14*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="16*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top">
+                <ListView  x:Name="ListTicket" Background="{x:Null}" FontSize="12" SelectionMode="Single">
+                    <ListView.Resources>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="125px"/>
+                            <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Cantidad}" Width="60px"/>
+                            <GridViewColumn Header="P/u" DisplayMemberBinding="{Binding PrecioUnidad}" Width="35px"/>
+                            <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding PrecioTotal}" Width="55px"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Viewbox>
+        </Grid>
+        <Image Source="/TavernSkeep;component/images/calc_bar.png" Stretch="Fill" Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Column="2" Grid.Row="3"/>
+            <Grid Width="auto" Height="auto" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="15*"/>
+                </Grid.RowDefinitions>
+                <Viewbox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="13px" Text="Precio:" Foreground="White"/>
+                </Viewbox>
+                <Viewbox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right">
+                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="PrecioTotalT" FontSize="13px" Text="" Foreground="White"/>
+                </Viewbox>
+
+                <Viewbox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left">
+                    <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="15px" Text="€" Foreground="White"/>
+                </Viewbox>
+            </Grid>
+        </Grid>
 </Window>

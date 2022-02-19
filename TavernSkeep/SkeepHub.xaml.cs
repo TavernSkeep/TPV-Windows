@@ -480,7 +480,7 @@ namespace TavernSkeep
             this.Close();
         }
 
-        private void button3_Click(object sender, RoutedEventArgs e)
+        private void Tickets_Click(object sender, RoutedEventArgs e)
         {
             tickets ticketsVentana = new tickets();
             ticketsVentana.Owner = this;
@@ -498,6 +498,12 @@ namespace TavernSkeep
 
         private void Descuento_Click(object sender, RoutedEventArgs e)
         {
+            if (preciototal.Text.Equals(""))
+            {
+                MessageBox.Show("No puedes aplicar un descuento sin antes haber añadido productos");
+                return;
+            }
+
             foreach (LineaTicket lt in ListTicket.Items)
             {
                 if (lt.Nombre.Equals("Descuento"))
