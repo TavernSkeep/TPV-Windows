@@ -76,10 +76,13 @@ namespace TavernSkeep
                 b3.EndInit();
 
                 b1.Source = b3;
-                               
+                b1.MouseEnter += Mesas_Hover;
+                b1.MouseLeave += Mesas_Leave;
+
                 l1.MouseLeftButtonDown += mesas_Click;
                 l1.VerticalAlignment = VerticalAlignment.Center;
                 l1.HorizontalAlignment = HorizontalAlignment.Center;
+                l1.IsEnabled = false;
 
                 if (m.Ticket_actual.Equals(""))
                     l1.Foreground = Brushes.Green;
@@ -110,6 +113,30 @@ namespace TavernSkeep
             });
 
 
+        }
+
+        public void Mesas_Hover(object sender, MouseEventArgs e)
+        {
+            Image l1 = sender as Image;
+
+            BitmapImage b3 = new BitmapImage();
+            b3.BeginInit();
+            b3.UriSource = new Uri("./images/boton_focus.png", UriKind.Relative);
+            b3.EndInit();
+
+            l1.Source = b3;
+        }
+
+        public void Mesas_Leave(object sender, MouseEventArgs e)
+        {
+            Image l1 = sender as Image;
+
+            BitmapImage b3 = new BitmapImage();
+            b3.BeginInit();
+            b3.UriSource = new Uri("./images/boton.png", UriKind.Relative);
+            b3.EndInit();
+
+            l1.Source = b3;
         }
         private void mesas_Click(object sender, MouseButtonEventArgs e)
         {
