@@ -301,6 +301,7 @@
     <Resource Include="Cartel-TavernSkeep.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Top.png" />
     <Resource Include="images\mapa.png" />
     <Resource Include="button.png" />
     <Resource Include="images\arrow_bottom.png" />
@@ -317,6 +318,8 @@
     <Resource Include="boton.png" />
     <Resource Include="arrow_left.png" />
     <Resource Include="images\calc_bar.png" />
+    <Resource Include="images\boton2.png" />
+    <Resource Include="images\boton2_focus.png" />
     <Content Include="images\loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -336,6 +339,7 @@
     <Resource Include="images\ramen.jpg" />
     <Resource Include="images\menu_horizontal.png" />
     <Resource Include="images\menu_horizontal_largo.png" />
+    <Resource Include="images\Top.png" />
     <Content Include="loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

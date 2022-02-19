@@ -30,6 +30,12 @@ namespace TavernSkeep
             this.Cursor = Cursors.None;
             Cursor cursor = new Cursor(Application.GetResourceStream(new Uri("cursors/sword.cur", UriKind.Relative)).Stream);
             this.Cursor = cursor;
+
+            MiniminizeButton.Click += (s, e) => WindowState = WindowState.Minimized;
+            MaximizeButton.Click += (s, e) => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            CloseButton.Click += (s, e) => Close();
+
+
             //Mouse.OverrideCursor = sword;
             Console.WriteLine("Always skeep = true");
         }
