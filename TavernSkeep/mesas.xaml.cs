@@ -65,10 +65,18 @@ namespace TavernSkeep
             {
                 response = client.GetAsync(request);
 
+                Viewbox v1 = new Viewbox();
+                StackPanel sp = new StackPanel();
+
+                v1.MouseLeftButtonDown += mesas_Click;
+                v1.Child = sp;
+                v1.Tag = m;
+
+                sp.Orientation = Orientation.Vertical;
+
                 Image b1 = new Image();
                 Label l1 = new Label();
                 l1.Content = m.Codigo;
-                l1.Tag = m;
 
                 BitmapImage b3 = new BitmapImage();
                 b3.BeginInit();
@@ -79,10 +87,17 @@ namespace TavernSkeep
                 b1.MouseEnter += Mesas_Hover;
                 b1.MouseLeave += Mesas_Leave;
 
-                l1.MouseLeftButtonDown += mesas_Click;
+                
                 l1.VerticalAlignment = VerticalAlignment.Center;
                 l1.HorizontalAlignment = HorizontalAlignment.Center;
                 l1.IsEnabled = false;
+
+                sp.Children.Add(b1);
+                sp.Children.Add(l1);
+                b1.VerticalAlignment = VerticalAlignment.Center;
+                b1.HorizontalAlignment = HorizontalAlignment.Center;
+                l1.VerticalAlignment = VerticalAlignment.Center;
+                l1.HorizontalAlignment = HorizontalAlignment.Center;
 
                 if (m.Ticket_actual.Equals(""))
                     l1.Foreground = Brushes.Green;
@@ -92,13 +107,9 @@ namespace TavernSkeep
                 if (m.Is_reservada)
                     l1.Foreground = Brushes.Orange;
 
-                GridBotones.Children.Add(b1);
-                Grid.SetColumn(b1, columna);
-                Grid.SetRow(b1, fila);
-
-                GridBotones.Children.Add(l1);
-                Grid.SetColumn(l1, columna);
-                Grid.SetRow(l1, fila);
+                GridBotones.Children.Add(v1);
+                Grid.SetColumn(v1, columna);
+                Grid.SetRow(v1, fila);
 
                 columna++;
 
@@ -140,7 +151,7 @@ namespace TavernSkeep
         }
         private void mesas_Click(object sender, MouseButtonEventArgs e)
         {
-            Label buttonmesa = sender as Label;
+            Viewbox buttonmesa = sender as Viewbox;
             Mesa m = buttonmesa.Tag as Mesa;
 
             if (m.Ticket_actual.Equals(""))
@@ -191,11 +202,6 @@ namespace TavernSkeep
                 }
 
                 ticketmesa = t1.Listaproductos;
-
-                foreach (LineaTicket lt in ticketmesa)
-                {
-                    MessageBox.Show(lt.Nombre);
-                }
 
                 Close();
             }
