@@ -22,21 +22,46 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Viewbox Stretch="Fill" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2">
-        <Image Source="/TavernSkeep;component/images/OrcWithGrog2.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1" Grid.RowSpan="2"></Image>
+            <Image Source="/TavernSkeep;component/images/OrcWithGrog2.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1" Grid.RowSpan="2"></Image>
         </Viewbox>
         <Viewbox Stretch="Fill" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2">
             <Image  Source="/TavernSkeep;component/images/Cartel-TavernSkeep.png"/>
         </Viewbox>
         <Image gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/images/SkippySkeep.gif" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="1" Grid.RowSpan="1"/>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="100,20,100,0" MaxWidth="290px">
-            <Viewbox  Stretch="Uniform" MaxHeight="160px">
-                <TextBox x:Name="dni" Background="Transparent" FontFamily="/TavernSkeep;component/font/#Arcade N" Foreground="White" Width="auto" Height="auto" TextAlignment="Left" MinHeight="20px" MinWidth="200px" VerticalAlignment="Center" Margin="0,40,0,0" MaxWidth="400px"/>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Stretch="Uniform">
+                    <Label Foreground="White" VerticalAlignment="Bottom">DNI</Label>
+            </Viewbox>
+            <Viewbox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Stretch="Uniform">
+                <TextBox x:Name="dni" Background="Transparent" FontFamily="/TavernSkeep;component/font/#Arcade N" Foreground="White" TextAlignment="Left" MinHeight="20px" MinWidth="200px" VerticalAlignment="Center" MaxWidth="250px"/>
+            </Viewbox>
 
+
+            <Viewbox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1" Stretch="Uniform">
+                <Label Foreground="White" VerticalAlignment="Bottom">PASS</Label>
             </Viewbox>
-            <Viewbox  Stretch="Uniform" MaxHeight="160px">
-                <PasswordBox x:Name="contraseña1" Background="Transparent" FontFamily="/TavernSkeep;component/font/#Arcade N" Foreground="White" Width="auto" Height="auto" MinHeight="20px"  MinWidth="200px" VerticalAlignment="Center" Margin="0,20,0,20" MaxWidth="400px"/>
+            <Viewbox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="1" Stretch="Uniform">
+                <PasswordBox x:Name="contraseña1" Background="Transparent" FontFamily="/TavernSkeep;component/font/#Arcade N" Foreground="White"  MinHeight="20px"  MinWidth="200px" VerticalAlignment="Center" MaxWidth="250px"/>
             </Viewbox>
-            <Viewbox  Stretch="Uniform" MaxWidth="250px" MinHeight="20px" MaxHeight="200px">
+
+
+
+            <Viewbox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Stretch="Uniform">
                 <Button Content="start" Width="auto" Height="auto" MinHeight="30px"  MinWidth="150px" Foreground="White" VerticalAlignment="Center" MaxWidth="50px" Click="Start_Click" FontFamily="/TavernSkeep;component/font/#Arcade N"
                           x:Name="button" ClickMode="Press" UseLayoutRounding="True">
                     <Button.Style >
@@ -65,8 +90,6 @@
                     </Button.Style>
                 </Button>
             </Viewbox>
-
-        </StackPanel>
-
+        </Grid>
     </Grid>
 </Window>
