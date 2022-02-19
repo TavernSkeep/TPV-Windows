@@ -41,7 +41,6 @@ namespace TavernSkeep
 
             var request = new RestRequest(id, Method.Get);
             var response = client.GetAsync(request);
-            //JObject json = JObject.Parse(response.Result.Content);
             emp1 = new Empleado();
             try
             {

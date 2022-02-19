@@ -17,16 +17,18 @@ using Newtonsoft.Json.Linq;
 
 namespace TavernSkeep
 {
-    /// <summary>
-    /// Lógica de interacción para mesas.xaml
-    /// </summary>
     public partial class mesas : Window
     {
+        public List<LineaTicket> ticketmesa = new List<LineaTicket>();
+        public List<LineaTicket> TicketVuelta
+        {
+            get { return ticketmesa; }
+        }
         RestClient client = new RestClient("http://localhost:8080");
         ListView ListTicket;
         List<Button> BotonesMesas = new List<Button>();
         List<Mesa> ObjetosMesa = new List<Mesa>();
-        //Mesa m1, m2, m3, m4, m5, m6, m7, m8, m9;
+        List<Ticket> TicketsMesa = new List<Ticket>();
         public mesas(ListView listticket)
         {
             InitializeComponent();
@@ -58,22 +60,46 @@ namespace TavernSkeep
             List<Mesa> ObjetosMesas = ObjetosMesa.OrderBy(m => m.Codigo).ToList();
             int fila = 0;
             int columna = 0;
-            foreach (Mesa m in ObjetosMesas)
+
+            ObjetosMesas.ForEach(m =>
             {
-                Button b1 = new Button();
-                b1.Content = m.Codigo;
-                ImageBrush brush = new ImageBrush();
-                brush.ImageSource = new BitmapImage(new Uri("./images/boton.png", UriKind.Relative));
-                b1.Background = brush;
-                b1.Tag = m;
+                response = client.GetAsync(request);
+
+                Image b1 = new Image();
+                Label l1 = new Label();
+                l1.Content = m.Codigo;
+                l1.Tag = m;
+
+                BitmapImage b3 = new BitmapImage();
+                b3.BeginInit();
+                b3.UriSource = new Uri("./images/boton.png", UriKind.Relative);
+                b3.EndInit();
+
+                b1.Source = b3;
+                               
+                l1.MouseLeftButtonDown += mesas_Click;
+                l1.VerticalAlignment = VerticalAlignment.Center;
+                l1.HorizontalAlignment = HorizontalAlignment.Center;
+
+                if (m.Ticket_actual.Equals(""))
+                    l1.Foreground = Brushes.Green;
+                else
+                    l1.Foreground = Brushes.Red;
+
+                if (m.Is_reservada)
+                    l1.Foreground = Brushes.Orange;
 
                 GridBotones.Children.Add(b1);
                 Grid.SetColumn(b1, columna);
                 Grid.SetRow(b1, fila);
 
+                GridBotones.Children.Add(l1);
+                Grid.SetColumn(l1, columna);
+                Grid.SetRow(l1, fila);
+
                 columna++;
-                
-                if (columna > 3)
+
+                if (columna > 2)
                 {
                     fila++;
                     columna = 0;
@@ -81,19 +107,72 @@ namespace TavernSkeep
                     RowDefinition rd = new RowDefinition();
                     GridBotones.RowDefinitions.Add(rd);
                 }
-            }
+            });
+
+
         }
-        private void mesas_Click(object sender, RoutedEventArgs e)
+        private void mesas_Click(object sender, MouseButtonEventArgs e)
         {
-            Button mesa = sender as Button;
-            
-            if (mesa.Tag != null)
+            Label buttonmesa = sender as Label;
+            Mesa m = buttonmesa.Tag as Mesa;
+
+            if (m.Ticket_actual.Equals(""))
             {
-                MessageBox.Show("Esta mesa ya tiene un ticket");
-                return;
+                Random rand = new Random();
+                Ticket tick = new Ticket();
+                tick.Id = "t" + rand.Next();
+                tick.Codigo = tick.Id;
+                tick.Mesa = m.Codigo;
+                
+                foreach (LineaTicket lt in ListTicket.Items) {
+                    tick.Listaproductos.Add(lt);
+                }
+
+                // Método para subir el ticket a la bbdd
+
+                var request = new RestRequest("ticket", Method.Post);
+                request.RequestFormat = RestSharp.DataFormat.Json;
+                request.AddJsonBody(tick);
+                var response = client.ExecutePostAsync(request);
+
+                // Método para modificar la mesa y añadirle el ticket actual
+
+                request = new RestRequest("mesa/" + m.Codigo, Method.Put);
+                request.AddJsonBody(new { ticket_actual = tick.Codigo, zona = m.Zona, n_sillas = m.N_sillas, is_reservada = m.Is_reservada, codigo = m.Codigo });
+                response = client.ExecutePutAsync(request);
+
+                Close();
             }
 
-            mesa.Tag = ListTicket;
+            else
+            {
+                string id = "/ticket/" + m.Ticket_actual;
+
+                var request = new RestRequest(id, Method.Get);
+                var response = client.GetAsync(request);
+                Ticket t1 = new Ticket();
+
+                try
+                {
+                    if (!response.Result.Content.Equals("null"))
+                        t1 = JsonConvert.DeserializeObject<Ticket>(response.Result.Content);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ha habido problemas conectando con la base de datos, compruebe su conexión.");
+                    return;
+                }
+
+                ticketmesa = t1.Listaproductos;
+
+                foreach (LineaTicket lt in ticketmesa)
+                {
+                    MessageBox.Show(lt.Nombre);
+                }
+
+                Close();
+            }
+
         }
     }
 }

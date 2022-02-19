@@ -29,6 +29,7 @@ namespace TavernSkeep
         List<Producto> prList = new List<Producto>();
         List<Producto> catList = new List<Producto>();
         List<Producto> menuList = new List<Producto>();
+        List<LineaTicket> TicketMesa = new List<LineaTicket>();
         int CurrentCategoryPage = 0;
         int CurrentProductPage = 0;
         double totaldescuento = 0;
@@ -333,6 +334,7 @@ namespace TavernSkeep
                 StackPanel s = new StackPanel();
                 s.Orientation = Orientation.Vertical;
 
+
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri(p.Imagen, UriKind.RelativeOrAbsolute));
                 i.Width = 300;
@@ -457,8 +459,18 @@ namespace TavernSkeep
         {
             mesas MesasVentana = new mesas(ListTicket);
             MesasVentana.Owner = this;
-            MesasVentana.ShowDialog();
-            
+
+            // Retornar la lista de ítems de la mesa seleccionada
+
+            if (MesasVentana.ShowDialog() == false)
+            {
+                if (MesasVentana.TicketVuelta != null && MesasVentana.TicketVuelta.Count > 0)
+                {
+                    TicketMesa = MesasVentana.TicketVuelta;
+                    ListTicket.Items.Clear();
+                    TicketMesa.ForEach(m => ListTicket.Items.Add(m));
+                }
+            }
         }
 
         private void button4_Click(object sender, RoutedEventArgs e)

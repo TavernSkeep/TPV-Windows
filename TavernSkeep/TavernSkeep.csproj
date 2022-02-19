@@ -202,6 +202,7 @@
     <Compile Include="SkeepHub.xaml.cs">
       <DependentUpon>SkeepHub.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ticket.cs" />
     <Compile Include="tickets.xaml.cs">
       <DependentUpon>tickets.xaml</DependentUpon>
     </Compile>

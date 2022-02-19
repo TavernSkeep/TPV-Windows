@@ -139,7 +139,7 @@
                             <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="15px" Text="€" Foreground="White"/>
                         </Viewbox>
                     </Grid>
-                    <Button Content="Cobrar" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
+                    <Button Content="Cobrar" Width="auto" Height="auto" Foreground="White" FontFamily="/TavernSkeep;component/font/#Arcade N"
                           ClickMode="Press" UseLayoutRounding="True" Grid.Column="1" Grid.Row="1" Click="Cobrar_Click">
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">
