@@ -555,7 +555,7 @@
 
                 <Viewbox Grid.Column="1" Grid.Row="6">
                     <Button  Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="button4" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="button4_Click">
+                          x:Name="button4" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="CerrarSesion_Click">
                         <TextBlock>CERRAR<LineBreak/>SESION</TextBlock>
                         <Button.Style >
                             <Style TargetType="{x:Type Button}">

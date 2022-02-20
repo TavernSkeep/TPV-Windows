@@ -25,7 +25,6 @@ namespace TavernSkeep
         RestClient client = new RestClient("http://localhost:8080");
         List<List<Producto>> catPag = new List<List<Producto>>();
         List<List<Producto>> prPag = new List<List<Producto>>();
-        List<List<Producto>> productsFromCategory = new List<List<Producto>>();
         List<Producto> prList = new List<Producto>();
         List<Producto> catList = new List<Producto>();
         List<Producto> menuList = new List<Producto>();
@@ -244,7 +243,7 @@ namespace TavernSkeep
 
         private void UpdateCategoryPage(List<List<Producto>> list, int number)
         {
-            gridProductos.Children.Clear();
+            gridCategorias.Children.Clear();
 
             int row = 0;
             int column = 0;
@@ -376,7 +375,6 @@ namespace TavernSkeep
 
         private void Categoria_Click(object sender, RoutedEventArgs e)
         {
-            productsFromCategory.Clear();
             prPag.Clear();
 
             Button boton = sender as Button;
@@ -409,7 +407,7 @@ namespace TavernSkeep
                 }
                 else
                 {
-                    productsFromCategory.Add(listin);
+                    prPag.Add(listin);
                     listin = new List<Producto>();
                     listin.Add(p);
                     i = 0;
@@ -417,20 +415,60 @@ namespace TavernSkeep
 
                 if (total + 1 == catProducts.Count)
                 {
-                    productsFromCategory.Add(listin);
+                    prPag.Add(listin);
                     break;
                 }
                 total++;
             }
 
             CurrentProductPage = 0;
-            UpdateProductPage(productsFromCategory, CurrentProductPage);
+            UpdateProductPage(prPag, CurrentProductPage);
         }
 
         private void Todo_Click(object sender, RoutedEventArgs e)
         {
+            prPag.Clear();
+
+            List<Producto> catProducts = new List<Producto>();
+
+            int i = 0;
+            int total = 0;
+
+            foreach (Producto p in menuList)
+            {
+                if (p.Es_categoria == false)
+                    catProducts.Add(p);
+            }
+
+            List<Producto> listin = new List<Producto>();
+
+            foreach (Producto p in catProducts)
+            {
+                if (i <= 11)
+                {
+                    listin.Add(p);
+
+                    i++;
+                }
+                else
+                {
+                    prPag.Add(listin);
+                    listin = new List<Producto>();
+                    listin.Add(p);
+                    i = 0;
+                }
+
+                if (total + 1 == catProducts.Count)
+                {
+                    prPag.Add(listin);
+                    break;
+                }
+                total++;
+            }
+
             CurrentProductPage = 0;
             UpdateProductPage(prPag, CurrentProductPage);
+            
         }
 
         private void Product_Click(object sender, RoutedEventArgs e)
@@ -465,7 +503,7 @@ namespace TavernSkeep
             mesas MesasVentana = new mesas(ListTicket);
             MesasVentana.Owner = this;
 
-            // Retornar la lista de ítems de la mesa seleccionada
+            // Retornar la lista de ítems de la mesa seleccionada desde la ventana de Mesas
 
             if (MesasVentana.ShowDialog() == false)
             {
@@ -480,7 +518,7 @@ namespace TavernSkeep
             }
         }
 
-        private void button4_Click(object sender, RoutedEventArgs e)
+        private void CerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             MainWindow login = new MainWindow();
             login.Show();
@@ -540,6 +578,7 @@ namespace TavernSkeep
             ListaTicketMesa = null;
         }
 
+        // Método para actualizar el precio total cada vez que se produzca un cambio en la lista de productos
         private void ListView_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add || e.Action == NotifyCollectionChangedAction.Remove || e.Action == NotifyCollectionChangedAction.Reset)
