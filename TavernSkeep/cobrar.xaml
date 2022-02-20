@@ -317,7 +317,7 @@
                     </Button.Style>
                 </Button>
                 <Button Content="C" Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="0" Grid.Row="4" Click="Button_Click_1">
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="0" Grid.Row="4" Click="Clear_Click">
                     <Button.Style >
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Template">
@@ -345,7 +345,7 @@
                 </Button>
 
                 <Button Content="," Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="2" Grid.Row="4" Click="Ok_Click">
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="2" Grid.Row="4">
                     <Button.Style >
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Template">
@@ -391,7 +391,7 @@
             </Grid.RowDefinitions>
 
             <Button Content="Tarjeta" Width="auto" Height="auto" Foreground="White" FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="1" Grid.Row="1">
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="1" Grid.Row="1" Click="Tarjeta_Click">
                 <Button.Style >
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">

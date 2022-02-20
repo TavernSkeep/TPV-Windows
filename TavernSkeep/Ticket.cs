@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TavernSkeep
 {
-    class Ticket
+    public class Ticket
     {
         private string _id = "";
         private string codigo = "";

@@ -554,7 +554,10 @@ namespace TavernSkeep
             {
                 MessageBox.Show("No hay ítems que cobrar");
                 return;
-            }      
+            }
+
+            //cobrar VentanaCobrar = new cobrar(preciototal.Text);
+
         }
     }
 }

@@ -187,7 +187,6 @@ namespace TavernSkeep
 
             else
             {
-
                 // Método para coger el ticket actual de la mesa y devolverlo a la pantalla principal
 
                 string id = "/ticket/" + m.Ticket_actual;
