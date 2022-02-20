@@ -29,7 +29,8 @@ namespace TavernSkeep
         List<Producto> prList = new List<Producto>();
         List<Producto> catList = new List<Producto>();
         List<Producto> menuList = new List<Producto>();
-        List<LineaTicket> TicketMesa = new List<LineaTicket>();
+        Ticket TicketMesa = new Ticket();
+        List<LineaTicket> ListaTicketMesa = new List<LineaTicket>();
         int CurrentCategoryPage = 0;
         int CurrentProductPage = 0;
         double totaldescuento = 0;
@@ -468,11 +469,12 @@ namespace TavernSkeep
 
             if (MesasVentana.ShowDialog() == false)
             {
-                if (MesasVentana.TicketVuelta != null && MesasVentana.TicketVuelta.Count > 0)
+                if (MesasVentana.TicketVuelta.Listaproductos != null && MesasVentana.TicketVuelta.Listaproductos.Count > 0)
                 {
                     TicketMesa = MesasVentana.TicketVuelta;
+                    ListaTicketMesa = MesasVentana.TicketVuelta.Listaproductos;
                     ListTicket.Items.Clear();
-                    TicketMesa.ForEach(m => ListTicket.Items.Add(m));
+                    ListaTicketMesa.ForEach(m => ListTicket.Items.Add(m));
                 }
             }
         }

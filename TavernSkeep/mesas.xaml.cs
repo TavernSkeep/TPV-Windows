@@ -19,8 +19,8 @@ namespace TavernSkeep
 {
     public partial class mesas : Window
     {
-        public List<LineaTicket> ticketmesa = new List<LineaTicket>();
-        public List<LineaTicket> TicketVuelta
+        public Ticket ticketmesa = new Ticket();
+        public Ticket TicketVuelta
         {
             get { return ticketmesa; }
         }
@@ -187,6 +187,7 @@ namespace TavernSkeep
 
             else
             {
+
                 // Método para coger el ticket actual de la mesa y devolverlo a la pantalla principal
 
                 string id = "/ticket/" + m.Ticket_actual;
@@ -206,7 +207,7 @@ namespace TavernSkeep
                     return;
                 }
 
-                ticketmesa = t1.Listaproductos;
+                ticketmesa = t1;
 
                 Close();
             }
