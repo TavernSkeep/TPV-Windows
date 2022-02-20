@@ -172,8 +172,26 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="14*"/>
                     <RowDefinition Height="80*"/>
+                    <RowDefinition Height="10*"/>
                     <RowDefinition Height="16*"/>
                 </Grid.RowDefinitions>
+
+                <Grid Grid.Column="1" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox Grid.Column="1" VerticalAlignment="Bottom">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="11px" Text="Mesa" Foreground="White"/>
+                            <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="11px" Text="1" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Grid>
+                
+                
+                
                 <Viewbox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top">
                     <ListView  x:Name="ListTicket" Background="{x:Null}" FontSize="12" SelectionMode="Single">
                         <ListView.Resources>
