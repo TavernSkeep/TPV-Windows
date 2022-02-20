@@ -475,6 +475,7 @@ namespace TavernSkeep
                     ListaTicketMesa = MesasVentana.TicketVuelta.Listaproductos;
                     ListTicket.Items.Clear();
                     ListaTicketMesa.ForEach(m => ListTicket.Items.Add(m));
+                    NumeroMesa.Text = TicketMesa.Mesa;
                 }
             }
         }
@@ -534,6 +535,9 @@ namespace TavernSkeep
         private void Borrar_Click(object sender, RoutedEventArgs e)
         {
             ListTicket.Items.Clear();
+            NumeroMesa.Text = "";
+            TicketMesa = null;
+            ListaTicketMesa = null;
         }
 
         private void ListView_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -552,14 +556,23 @@ namespace TavernSkeep
 
         private void Cobrar_Click(object sender, RoutedEventArgs e)
         {
-            if (ListTicket.Items.Count < 1)
+            if (TicketMesa == null || ListaTicketMesa.Count < 1)
             {
-                MessageBox.Show("No hay ítems que cobrar");
+                MessageBox.Show("No hay mesa asignada");
                 return;
             }
-
-            //cobrar VentanaCobrar = new cobrar(preciototal.Text);
-
+            cobrar VentanaCobrar = new cobrar(preciototal.Text, TicketMesa);
+            if (VentanaCobrar.ShowDialog() == false) {
+                if (!VentanaCobrar.CobrarSatisfactorio)
+                    return;
+                else
+                {
+                    ListTicket.Items.Clear();
+                    NumeroMesa.Text = "";
+                    TicketMesa = null;
+                    ListaTicketMesa = null;
+                }
+            }
         }
     }
 }

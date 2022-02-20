@@ -19,6 +19,12 @@ namespace TavernSkeep
     public partial class cobrar : Window
     {
         RestClient client = new RestClient("http://localhost:8080");
+        bool cobrarsatisfactorio = false;
+        public bool CobrarSatisfactorio
+        {
+            get { return cobrarsatisfactorio; }
+        }
+
         public double Preciot;
         Ticket tick; 
         public cobrar(string preciot, Ticket ticket)
@@ -55,9 +61,8 @@ namespace TavernSkeep
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (descuentocalc.Text.Length > 9)
-            {
                 return;
-            }
+
             Button b1 = sender as Button;
             descuentocalc.Text += b1.Content;
         }
@@ -70,7 +75,39 @@ namespace TavernSkeep
         private void Tarjeta_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("A casa champion");
+            Cobrar_Ticket();
             Close();
+        }
+
+        private void Cobrar_Ticket()
+        {
+
+            string id = "/mesa/" + tick.Mesa;
+
+            var request = new RestRequest(id, Method.Get);
+            var response = client.GetAsync(request);
+            Mesa m = new Mesa();
+
+            try
+            {
+                if (!response.Result.Content.Equals("null"))
+                {
+                    m = JsonConvert.DeserializeObject<Mesa>(response.Result.Content);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha habido problemas conectando con la base de datos, compruebe su conexión.");
+                return;
+            }
+
+            // Método para modificar la mesa y añadirle el ticket actual
+
+            request = new RestRequest("mesa/" + tick.Codigo, Method.Put);
+            request.AddJsonBody(new { ticket_actual = "", zona = m.Zona, n_sillas = m.N_sillas, is_reservada = m.Is_reservada, codigo = m.Codigo });
+            response = client.ExecutePutAsync(request);
+
+            cobrarsatisfactorio = true;
         }
     }
 }

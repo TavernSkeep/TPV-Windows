@@ -183,10 +183,7 @@
                         <ColumnDefinition Width="30*"/>
                     </Grid.ColumnDefinitions>
                     <Viewbox Grid.Column="1" VerticalAlignment="Bottom">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="11px" Text="Mesa" Foreground="White"/>
-                            <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="11px" Text="1" Foreground="White"/>
-                        </StackPanel>
+                        <TextBlock x:Name="NumeroMesa" FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="11px" Text="" Foreground="Black"/>
                     </Viewbox>
                 </Grid>
                 

@@ -157,7 +157,7 @@ namespace TavernSkeep
             Viewbox buttonmesa = sender as Viewbox;
             Mesa m = buttonmesa.Tag as Mesa;
 
-            if (m.Ticket_actual.Equals(""))
+            if (m.Ticket_actual.Equals("") && ListTicket.Items.Count > 0)
             {
                 Random rand = new Random();
                 Ticket tick = new Ticket();
