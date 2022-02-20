@@ -36,6 +36,9 @@ namespace TavernSkeep
         public SkeepHub(Empleado emp)
         {
             InitializeComponent();
+            MiniminizeButton.Click += (s, e) => WindowState = WindowState.Minimized;
+            MaximizeButton.Click += (s, e) => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            CloseButton.Click += (s, e) => Close();
             nametpv.Text = emp.Nombre;
             puestotpv.Text = emp.Puesto;
             this.Cursor = Cursors.None;
@@ -373,6 +376,7 @@ namespace TavernSkeep
         private void Categoria_Click(object sender, RoutedEventArgs e)
         {
             productsFromCategory.Clear();
+            prPag.Clear();
 
             Button boton = sender as Button;
             Producto c = boton.Tag as Producto;

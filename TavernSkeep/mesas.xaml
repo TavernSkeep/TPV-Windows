@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TavernSkeep"
         mc:Ignorable="d"
-        Title="Mesas" Height="450" Width="800"
+        Title="Mesas" Height="450" Width="800" Icon="/TavernSkeep;component/images/logo-skip.png" 
         ResizeMode="NoResize"
         FontFamily="/TavernSkeep;component/font/#Arcade N">
     <Grid>

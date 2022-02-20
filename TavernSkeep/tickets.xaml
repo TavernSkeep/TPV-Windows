@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TavernSkeep"
         mc:Ignorable="d"
-        Title="Tickets" Height="450" Width="800"
+        Title="Tickets" Height="450" Width="800" Icon="/TavernSkeep;component/images/logo-skip.png"
         ResizeMode="NoResize">
 
     <Grid>
@@ -25,34 +25,22 @@
             <ColumnDefinition Width="60*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <Viewbox Grid.Row="1" Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="CodigoTicket" Width="auto" Height="auto" TextAlignment="Left" MinHeight="120px" MinWidth="1000px" VerticalAlignment="Center" FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="60" MaxLength="20">
-                    <TextBox.Style>
-                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                            <Style.Resources>
-                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
-                                    <VisualBrush.Visual>
-                                        <Label Content="CODIGO TICKET" Foreground="LightGray" FontSize="60"  FontFamily="/TavernSkeep;component/font/#Arcade N" />
-                                    </VisualBrush.Visual>
-                                </VisualBrush>
-                            </Style.Resources>
-                            <Style.Triggers>
-                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                </Trigger>
-                                <Trigger Property="Text" Value="{x:Null}">
-                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                </Trigger>
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter Property="Background" Value="White" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBox.Style>
-                </TextBox>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Stretch="Uniform">
+                <Label Foreground="Gold" VerticalAlignment="Bottom" HorizontalAlignment="Right">CODIGO TICKET</Label>
+            </Viewbox>
+            <Viewbox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Stretch="Uniform">
+                <TextBox x:Name="CodigoTicket" Foreground="White" Background="Transparent" Width="auto" Height="auto" TextAlignment="Left" MinHeight="120px" MinWidth="1000px" VerticalAlignment="Center" FontFamily="/TavernSkeep;component/font/#Arcade N" FontSize="60" MaxLength="20"></TextBox>
+            </Viewbox>
+
+            <Viewbox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Stretch="Uniform">
                 <Button Width="auto" Content="Buscar Ticket" Height="auto" Foreground="White" FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="0" Grid.Row="1" Click="BuscarTicket_Click" FontSize="60">
+                          ClickMode="Press" UseLayoutRounding="True"  Click="BuscarTicket_Click" MinHeight="20" MinWidth="140" FontSize="9">
                     <Button.Style >
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Template">
@@ -78,8 +66,10 @@
                         </Style>
                     </Button.Style>
                 </Button>
-            </StackPanel>
-        </Viewbox>
+            </Viewbox>
+        </Grid>
+        
+                 
         <Grid x:Name="GridTickets" Grid.Column="1" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="158*"/>
@@ -88,7 +78,7 @@
             </Grid.ColumnDefinitions>
 
         </Grid>
-        <ListView x:Name="AllTickets" Grid.Column="1" Grid.Row="2" Background="Transparent" Foreground="Gold" FontWeight="Black" SelectionMode="Single" SelectionChanged="AllTickets_SelectionChanged" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <ListView x:Name="AllTickets" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Background="Transparent" Foreground="Gold" FontWeight="Black" SelectionMode="Single" SelectionChanged="AllTickets_SelectionChanged" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListView.Resources>
                 <Style TargetType="GridViewColumnHeader">
                     <Setter Property="Background" Value="Transparent" />
