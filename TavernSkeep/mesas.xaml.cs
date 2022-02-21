@@ -69,46 +69,95 @@ namespace TavernSkeep
                 response = client.GetAsync(request);
 
                 Viewbox v1 = new Viewbox();
-                StackPanel sp = new StackPanel();
+                DockPanel sp = new DockPanel();
+
+                sp.MinHeight = 200;
+                sp.MinWidth = 450;
+
 
                 v1.MouseLeftButtonDown += mesas_Click;
                 v1.Child = sp;
                 v1.Tag = m;
 
-                sp.Orientation = Orientation.Vertical;
+                sp.HorizontalAlignment = HorizontalAlignment.Center;
+
+               ImageBrush b6 = new ImageBrush();
+               b6.ImageSource = new BitmapImage( new Uri("./images/boton.png", UriKind.Relative));
+               sp.Background = b6;
 
                 Image b1 = new Image();
+                Image i1 = new Image();
                 Label l1 = new Label();
+                l1.FontSize = 30;
+                l1.Foreground = Brushes.White;
+
                 l1.Content = m.Codigo;
 
-                BitmapImage b3 = new BitmapImage();
+
+
+
+               
+
+
+              /*  BitmapImage b3 = new BitmapImage();
                 b3.BeginInit();
                 b3.UriSource = new Uri("./images/boton.png", UriKind.Relative);
                 b3.EndInit();
 
+
                 b1.Source = b3;
+              */
                 b1.MouseEnter += Mesas_Hover;
                 b1.MouseLeave += Mesas_Leave;
 
                 
                 l1.VerticalAlignment = VerticalAlignment.Center;
-                l1.HorizontalAlignment = HorizontalAlignment.Center;
+                l1.HorizontalAlignment = HorizontalAlignment.Right;
+
                 l1.IsEnabled = false;
 
+                Thickness t1 = l1.Margin;
+                t1.Right = 120;
+                l1.Margin = t1;
+
                 sp.Children.Add(b1);
+                sp.Children.Add(i1);
                 sp.Children.Add(l1);
-                b1.VerticalAlignment = VerticalAlignment.Center;
-                b1.HorizontalAlignment = HorizontalAlignment.Center;
-                l1.VerticalAlignment = VerticalAlignment.Center;
-                l1.HorizontalAlignment = HorizontalAlignment.Center;
+
+                
 
                 if (m.Ticket_actual.Equals("uwu"))
-                    l1.Foreground = Brushes.Green;
-                else
-                    l1.Foreground = Brushes.Red;
+                {
 
-                if (m.Is_reservada)
-                    l1.Foreground = Brushes.Orange;
+                    BitmapImage b2 = new BitmapImage();
+                    b2.BeginInit();
+                    b2.UriSource = new Uri("./images/s1.png", UriKind.Relative);
+                    b2.EndInit();
+                    i1.Source = b2;
+                    ImageBrush b7 = new ImageBrush();
+                    b7.ImageSource = new BitmapImage(new Uri("./images/boton_focus.png", UriKind.Relative));
+                    sp.Background = b7;
+                }
+                else { 
+                    BitmapImage b5 = new BitmapImage();
+                    b5.BeginInit();
+                    b5.UriSource = new Uri("./images/s2.png", UriKind.Relative);
+                    b5.EndInit();
+                    i1.Source = b5;
+                    ImageBrush b8 = new ImageBrush();
+                    b8.ImageSource = new BitmapImage(new Uri("./images/boton.png", UriKind.Relative));
+                    sp.Background = b8;
+                }
+                if (m.Is_reservada && m.Ticket_actual.Equals("uwu")) { 
+                    BitmapImage b4 = new BitmapImage();
+                    b4.BeginInit();
+                    b4.UriSource = new Uri("./images/swords.png", UriKind.Relative);
+                    b4.EndInit();
+                    i1.Source = b4;
+                    ImageBrush b9 = new ImageBrush();
+                    b9.ImageSource = new BitmapImage(new Uri("./images/boton2_focus.png", UriKind.Relative));
+                    sp.Background = b9;
+                }
 
                 GridBotones.Children.Add(v1);
                 Grid.SetColumn(v1, columna);
