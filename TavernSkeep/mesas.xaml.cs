@@ -104,7 +104,6 @@ namespace TavernSkeep
                 b3.UriSource = new Uri("./images/boton.png", UriKind.Relative);
                 b3.EndInit();
 
-
                 b1.Source = b3;
               */
                 b1.MouseEnter += Mesas_Hover;
