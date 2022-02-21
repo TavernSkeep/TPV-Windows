@@ -23,6 +23,8 @@ namespace TavernSkeep
     public partial class SkeepHub : Window
     {
         RestClient client = new RestClient("http://localhost:8080");
+        Empleado emp1;
+        List<string> AdminJobs = new List<string> {"Jefe", "Admin", "Encargado"};
         List<List<Producto>> catPag = new List<List<Producto>>();
         List<List<Producto>> prPag = new List<List<Producto>>();
         List<Producto> prList = new List<Producto>();
@@ -36,6 +38,8 @@ namespace TavernSkeep
         public SkeepHub(Empleado emp)
         {
             InitializeComponent();
+            emp1 = emp;
+            
             MiniminizeButton.Click += (s, e) => WindowState = WindowState.Minimized;
             MaximizeButton.Click += (s, e) => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
             CloseButton.Click += (s, e) => Close();
@@ -45,12 +49,26 @@ namespace TavernSkeep
             Cursor cursor = new Cursor(Application.GetResourceStream(new Uri("cursors/sword.cur", UriKind.Relative)).Stream);
             this.Cursor = cursor;
             //media.Source = new Uri();
+            CheckIfAdmin();
             Loading();
             startClock();
             ChargeProducts();
             UpdateCategoryPage(catPag, CurrentCategoryPage);
             UpdateProductPage(prPag, CurrentProductPage);
             ((INotifyCollectionChanged)ListTicket.Items).CollectionChanged += ListView_CollectionChanged;
+        }
+
+        private void CheckIfAdmin()
+        {
+            if (AdminJobs.Contains(emp1.Puesto)) {
+                Admin.IsEnabled = true;
+                Admin.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Admin.IsEnabled = false;
+                Admin.Visibility = Visibility.Hidden;
+            }
         }
 
         private void ChargeProducts()

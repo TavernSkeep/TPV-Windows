@@ -51,6 +51,8 @@ namespace TavernSkeep
 
         private void CrearEmpleado(string Nombre, string Apellidos, string Contrasena, string Dni, string Puesto, string Telefono, string Email)
         {
+            Random random = new Random();
+
             Empleado emp1 = new Empleado(Nombre, Apellidos, Contrasena, Dni, Puesto, Telefono, Email);
 
             var request = new RestRequest("empleado", Method.Post);
@@ -560,7 +562,7 @@ namespace TavernSkeep
             Label LblEmail = new Label();
             LblEmail.Content = "Email:";
             LblEmail.Foreground = Brushes.Gold;
-            LblEmail.FontSize = 20;
+            LblEmail.FontSize = 20;             // Genio quien lea esto xD
             LblEmail.HorizontalAlignment = HorizontalAlignment.Center;
             LblEmail.VerticalAlignment = VerticalAlignment.Center;
 
@@ -731,7 +733,7 @@ namespace TavernSkeep
             }
             catch (Exception ex) { }
 
-            CrearEmpleado(nombre.Text, apellidos.Text, dni.Text, contrasena.Text, email.Text, telefono.Text, puesto.Text);
+            CrearEmpleado(nombre.Text, apellidos.Text, contrasena.Text, dni.Text, puesto.Text, telefono.Text, email.Text);
         }
 
         private void ButtonBorrar_Click(object sender, RoutedEventArgs e)
