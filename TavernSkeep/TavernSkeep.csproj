@@ -347,6 +347,9 @@
     <Resource Include="images\menu_horizontal.png" />
     <Resource Include="images\menu_horizontal_largo.png" />
     <Resource Include="images\Top.png" />
+    <Resource Include="images\s1.png" />
+    <Resource Include="images\s2.png" />
+    <Resource Include="images\swords.png" />
     <Content Include="loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
