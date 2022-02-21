@@ -17,6 +17,21 @@ namespace TavernSkeep
         private String telefono = "";
         private String email = "";
 
+        public Empleado(string nombre, string apellidos, string contraseña, string dni, string puesto, string telefono, string email)
+        {
+            Random random = new Random();
+            Id = random.Next().ToString();
+            Nombre = nombre;
+            Apellidos = apellidos;
+            Contraseña = contraseña;
+            Dni = dni;
+            Puesto = puesto;
+            Telefono = telefono;
+            Email = email;
+        }
+
+        public Empleado() { }
+
         public string Id { get => _id; set => _id = value; }
         public string Contraseña { get => contraseña; set => contraseña = value; }
         public string Nombre { get => nombre; set => nombre = value; }

@@ -9,7 +9,7 @@
         ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/TavernSkeep;component/images/fondo.jpg"/>
+            <ImageBrush ImageSource="fondo.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
@@ -32,7 +32,7 @@
 
         <Viewbox Grid.Column="1" Grid.Row="1">
             <Button  Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="280px"  MaxHeight="220px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="crearprod" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="Crear_producto">
+                          x:Name="crearprod" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="CrearProducto_Click">
                 <TextBlock TextAlignment="Center">CREAR<LineBreak/>PRODUCTO</TextBlock>
                 <Button.Style >
                     <Style TargetType="{x:Type Button}">
@@ -63,7 +63,7 @@
 
         <Viewbox Grid.Column="1" Grid.Row="3">
             <Button  Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="280px"  MaxHeight="220px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="modprod" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="Mod_producto">
+                          x:Name="modprod" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="ModificarProducto_Click">
                 <TextBlock TextAlignment="Center">Modificar<LineBreak/>PRODUCTO</TextBlock>
                 <Button.Style >
                     <Style TargetType="{x:Type Button}">
@@ -94,7 +94,7 @@
 
         <Viewbox Grid.Column="1" Grid.Row="5">
             <Button  Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="280px"  MaxHeight="220px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="borrprod" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="Borrar_producto">
+                          x:Name="borrprod" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="BorrarProducto_Click">
                 <TextBlock TextAlignment="Center">Borrar<LineBreak/>PRODUCTO</TextBlock>
                 <Button.Style >
                     <Style TargetType="{x:Type Button}">
@@ -125,7 +125,7 @@
 
         <Viewbox Grid.Column="3" Grid.Row="1">
             <Button  Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="280px"  MaxHeight="220px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="crearruser" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="Crear_empleado">
+                          x:Name="crearruser" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="CrearEmpleado_Click">
                 <TextBlock TextAlignment="Center">Crear<LineBreak/>Empleado</TextBlock>
                 <Button.Style >
                     <Style TargetType="{x:Type Button}">
@@ -156,7 +156,7 @@
 
         <Viewbox Grid.Column="3" Grid.Row="3">
             <Button  Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="280px"  MaxHeight="220px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="modruser" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="Mod_empleado">
+                          x:Name="modruser" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="ModificarEmpleado_Click">
                 <TextBlock TextAlignment="Center">Modificar<LineBreak/>Empleado</TextBlock>
                 <Button.Style >
                     <Style TargetType="{x:Type Button}">
@@ -187,7 +187,7 @@
 
         <Viewbox Grid.Column="3" Grid.Row="5">
             <Button  Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="280px"  MaxHeight="220px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="borrarruser" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="Borrar_empleado">
+                          x:Name="borrarruser" ClickMode="Press" UseLayoutRounding="True" FontSize="28" Click="BorrarEmpleado_Click">
                 <TextBlock TextAlignment="Center">Borrar<LineBreak/>Empleado</TextBlock>
                 <Button.Style >
                     <Style TargetType="{x:Type Button}">
@@ -232,8 +232,11 @@
                 <ColumnDefinition Width="8*"/>
             </Grid.ColumnDefinitions>
 
+            <Viewbox Grid.Column="1" Grid.Row="1">
+                <Grid x:Name="GridDatos" >
 
+                </Grid>
+            </Viewbox>
         </Grid>
-
     </Grid>
 </Window>

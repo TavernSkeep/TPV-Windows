@@ -26,7 +26,7 @@ namespace TavernSkeep
         }
 
         public double Preciot;
-        Ticket tick; 
+        Ticket tick;
         public cobrar(string preciot, Ticket ticket)
         {
             InitializeComponent();
@@ -60,16 +60,16 @@ namespace TavernSkeep
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (descuentocalc.Text.Length > 9)
+            if (dinerorecibido.Text.Length > 15)
                 return;
 
             Button b1 = sender as Button;
-            descuentocalc.Text += b1.Content;
+            dinerorecibido.Text += b1.Content;
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
-            descuentocalc.Text = "";
+            dinerorecibido.Text = "";
         }
 
         private void Tarjeta_Click(object sender, RoutedEventArgs e)
@@ -108,6 +108,31 @@ namespace TavernSkeep
             response = client.ExecutePutAsync(request);
 
             cobrarsatisfactorio = true;
+        }
+
+        private void Efectivo_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (dinerorecibido.Text.Equals(""))
+                return;
+
+            double dinerodouble = double.Parse(dinerorecibido.Text);
+            double devolucion = dinerodouble - Preciot;
+
+            if (devolucion >= 0)
+            {
+                preciofinal.Text = "Devolucion:" + devolucion + "€";
+                MessageBox.Show("Ticket cobrado con exito");
+                Cobrar_Ticket();
+                Close();
+            }
+            else
+            {
+                preciofinal.Text = "Falta dinero";
+                dinerorecibido.Text = "";
+            }
+
+
         }
     }
 }

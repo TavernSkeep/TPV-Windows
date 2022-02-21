@@ -90,15 +90,15 @@ namespace TavernSkeep
             foreach (Producto p in menuList)
             {
                 
-                if (i <= 11)
+                if (i <= 10)
                 {
                     listin.Add(p);
                     i++;
                 } else
                 {
-                    prPag.Add(listin);
-                    listin = new List<Producto>();
                     listin.Add(p);
+                    prPag.Add(listin);
+                    listin = new List<Producto>();                  
                     i = 0;
                 }
 
@@ -444,7 +444,7 @@ namespace TavernSkeep
 
             foreach (Producto p in catProducts)
             {
-                if (i <= 11)
+                if (i <= 10)
                 {
                     listin.Add(p);
 
@@ -452,9 +452,9 @@ namespace TavernSkeep
                 }
                 else
                 {
+                    listin.Add(p);
                     prPag.Add(listin);
                     listin = new List<Producto>();
-                    listin.Add(p);
                     i = 0;
                 }
 

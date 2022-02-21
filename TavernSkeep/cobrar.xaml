@@ -42,7 +42,7 @@
                         <RowDefinition Height="15*"/>
                     </Grid.RowDefinitions>
                     <Viewbox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
-                        <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="descuentocalc" FontSize="13px" Text="" Foreground="White"/>
+                        <TextBlock FontFamily="/TavernSkeep;component/font/#Arcade N" Name="dinerorecibido" FontSize="13px" Text="" Foreground="White"/>
                     </Viewbox>
                 </Grid>
 
@@ -345,7 +345,7 @@
                 </Button>
 
                 <Button Content="," Width="auto" Height="auto" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="2" Grid.Row="4">
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="2" Grid.Row="4" Click="Button_Click">
                     <Button.Style >
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Template">
@@ -419,7 +419,7 @@
             </Button>
 
             <Button Content="Efectivo" Width="auto" Height="auto" Foreground="White" FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="3" Grid.Row="1">
+                          ClickMode="Press" UseLayoutRounding="True" Grid.Column="3" Grid.Row="1" Click="Efectivo_Click">
                 <Button.Style >
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
