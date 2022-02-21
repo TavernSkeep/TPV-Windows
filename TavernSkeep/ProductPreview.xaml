@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TavernSkeep"
         mc:Ignorable="d"
-        Title="ProductPreview" Height="500" Width="450"
-        ResizeMode="NoResize">
+        Title="ProductPreview" Height="500" Width="450" Icon="/TavernSkeep;component/images/logo-skip.png"
+        ResizeMode="NoResize" >
     <Grid x:Name="GridProduct">
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>

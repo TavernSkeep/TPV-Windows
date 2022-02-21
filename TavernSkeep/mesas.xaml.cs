@@ -102,7 +102,7 @@ namespace TavernSkeep
                 l1.VerticalAlignment = VerticalAlignment.Center;
                 l1.HorizontalAlignment = HorizontalAlignment.Center;
 
-                if (m.Ticket_actual.Equals(""))
+                if (m.Ticket_actual.Equals("uwu"))
                     l1.Foreground = Brushes.Green;
                 else
                     l1.Foreground = Brushes.Red;
@@ -157,7 +157,7 @@ namespace TavernSkeep
             Viewbox buttonmesa = sender as Viewbox;
             Mesa m = buttonmesa.Tag as Mesa;
 
-            if (m.Ticket_actual.Equals("") && ListTicket.Items.Count > 0)
+            if (m.Ticket_actual.Equals("uwu") && ListTicket.Items.Count > 0)
             {
                 Random rand = new Random();
                 Ticket tick = new Ticket();

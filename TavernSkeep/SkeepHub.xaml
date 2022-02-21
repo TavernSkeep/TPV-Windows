@@ -36,7 +36,7 @@
             <RowDefinition Height="339*"/>
             <RowDefinition Height="131*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="content" Grid.RowSpan="2" >
+        <Grid x:Name="content" Grid.RowSpan="2" Visibility="Collapsed" >
             <Grid.Background>
                 <ImageBrush ImageSource="fondo.jpg"/>
             </Grid.Background>
@@ -523,7 +523,7 @@
                     <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
 
-                <Viewbox Grid.Column="1" Grid.Row="4">
+                <Viewbox Grid.Column="1" Grid.Row="2">
                     <Button Content="TICKETS" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
                           x:Name="button3" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="Tickets_Click">
                         <Button.Style >
@@ -553,7 +553,7 @@
                     </Button>
                 </Viewbox>
 
-                <Viewbox Grid.Column="1" Grid.Row="6">
+                <Viewbox Grid.Column="1" Grid.Row="4">
                     <Button  Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
                           x:Name="button4" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="CerrarSesion_Click">
                         <TextBlock>CERRAR<LineBreak/>SESION</TextBlock>
@@ -584,7 +584,7 @@
                     </Button>
                 </Viewbox>
 
-                <Viewbox Grid.Column="1" Grid.Row="2">
+                <Viewbox Grid.Column="1" Grid.Row="0">
                     <Button Content="Mesas" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
                           x:Name="button5" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="Mesas_Click">
                         <Button.Style >
@@ -614,7 +614,7 @@
                     </Button>
                 </Viewbox>
 
-                <Viewbox Grid.Column="1" Grid.Row="0">
+                <Viewbox Grid.Column="1" Grid.Row="6">
                     <Button Content="ADMIN" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
                           x:Name="Admin" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="Admin_Click">
                         <Button.Style >
@@ -646,7 +646,7 @@
 
             </Grid>
         </Grid>
-        <Image Visibility="Collapsed" Name="loadbg" gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/medieval-inn.gif" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill" Margin="0,0,-0.4,0.4" Grid.RowSpan="2"/>
-        <Image Visibility="Collapsed" Name="loaddots" gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/loading_dots_white.gif" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="397,235,396.6,104"/>
+        <Image  Name="loadbg" gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/medieval-inn.gif" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill" Margin="0,0,-0.4,0.4" Grid.RowSpan="2"/>
+        <Image Name="loaddots" gif:ImageBehavior.AnimatedSource="/TavernSkeep;component/loading_dots_white.gif" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="397,235,396.6,104"/>
     </Grid>
 </Window>
