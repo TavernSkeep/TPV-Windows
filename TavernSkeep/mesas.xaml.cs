@@ -271,35 +271,3 @@ namespace TavernSkeep
         }
     }
 }
-
-/*
-        <Viewbox Grid.Row="0" Grid.Column="0">
-                <Button Content="MESA 1" Width="auto" Height="auto" MinHeight="150px"  MinWidth="150px" MaxWidth="250px"  MaxHeight="200px" Foreground="White"  FontFamily="/TavernSkeep;component/font/#Arcade N"
-                          x:Name="mesa1" ClickMode="Press" UseLayoutRounding="True" FontSize="30" Click="mesas_Click">
-                    <Button.Style >
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Grid>
-                                            <Image 
-                                            x:Name="buttonImage" Stretch="Fill"
-                                            Source="/TavernSkeep;component/images/boton.png"/>
-                                            <ContentPresenter
-                                            Margin="{TemplateBinding Padding}"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center" />
-                                        </Grid>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="true">
-                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Button.Style>
-                </Button>
-            </Viewbox>
-*/

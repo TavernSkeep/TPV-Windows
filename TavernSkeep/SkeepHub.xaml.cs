@@ -529,8 +529,9 @@ namespace TavernSkeep
                 {
                     TicketMesa = MesasVentana.TicketVuelta;
                     ListaTicketMesa = MesasVentana.TicketVuelta.Listaproductos;
-                    ListTicket.Items.Clear();
-                    ListaTicketMesa.ForEach(m => ListTicket.Items.Add(m));
+                    ListTicket.Items.Clear();                    
+                    ListaTicketMesa.ForEach(m =>
+                        ListTicket.Items.Add(m));
                     NumeroMesa.Text = TicketMesa.Mesa;
                 }
             }
