@@ -211,7 +211,7 @@ namespace TavernSkeep
                 // Método para modificar la mesa y añadirle el ticket actual
 
                 request = new RestRequest("mesa/" + m.Codigo, Method.Put);
-                request.AddJsonBody(new { ticket_actual = tick.Codigo, zona = m.Zona, n_sillas = m.N_sillas, is_reservada = m.Is_reservada, codigo = m.Codigo });
+                request.AddJsonBody(new { ticket_actual = tick.Codigo, zona = m.Zona, n_sillas = m.N_sillas, is_reservada = m.Is_reservada, codigo = m.Codigo, _id = m.Codigo });
                 response = client.ExecutePutAsync(request);
 
                 Close();
@@ -255,7 +255,7 @@ namespace TavernSkeep
             if (m.Is_reservada)
             {
                  var request = new RestRequest("mesa/" + m.Codigo, Method.Put);
-                request.AddJsonBody(new { ticket_actual = m.Ticket_actual, zona = m.Zona, n_sillas = m.N_sillas, is_reservada = false, codigo = m.Codigo });
+                request.AddJsonBody(new { ticket_actual = m.Ticket_actual, zona = m.Zona, n_sillas = m.N_sillas, is_reservada = false, codigo = m.Codigo, _id = m.Codigo });
                 var response = client.ExecutePutAsync(request);
 
 
@@ -263,7 +263,7 @@ namespace TavernSkeep
             }else
             {
                 var request = new RestRequest("mesa/" + m.Codigo, Method.Put);
-                request.AddJsonBody(new { ticket_actual = m.Ticket_actual, zona = m.Zona, n_sillas = m.N_sillas, is_reservada = true, codigo = m.Codigo });
+                request.AddJsonBody(new { ticket_actual = m.Ticket_actual, zona = m.Zona, n_sillas = m.N_sillas, is_reservada = true, codigo = m.Codigo, _id = m.Codigo });
                 var response = client.ExecutePutAsync(request);
 
                 Close();
