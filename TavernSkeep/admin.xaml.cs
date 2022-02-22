@@ -274,7 +274,7 @@ namespace TavernSkeep
             specs.TextAlignment = TextAlignment.Center;
             specs.Foreground = Brushes.Gold;
             specs.FontSize = 18;
-            specs.MaxLength = 200;
+            specs.MaxLength = 100;
 
             st2.Children.Add(LblSpecs);
             st2.Children.Add(specs);
@@ -330,7 +330,7 @@ namespace TavernSkeep
             imagen.TextAlignment = TextAlignment.Center;
             imagen.Foreground = Brushes.Gold;
             imagen.FontSize = 18;
-            imagen.MaxLength = 20;
+            imagen.MaxLength = 100;
 
             st4.Children.Add(LblImagen);
             st4.Children.Add(imagen);
@@ -772,7 +772,7 @@ namespace TavernSkeep
             specs.TextAlignment = TextAlignment.Center;
             specs.Foreground = Brushes.Gold;
             specs.FontSize = 18;
-            specs.MaxLength = 200;
+            specs.MaxLength = 100;
 
             st2.Children.Add(LblSpecs);
             st2.Children.Add(specs);
