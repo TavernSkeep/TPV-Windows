@@ -12,12 +12,12 @@ namespace TavernSkeep
         private string codigo = "";
         private string mesa = "";
         private List<LineaTicket> listaproductos = new List<LineaTicket>();
-        private DateTime fecha = DateTime.Now;
+        private string fecha = DateTime.Now.ToString();
 
         public string Id { get => _id; set => _id = value; }
         public string Codigo { get => codigo; set => codigo = value; }
         public string Mesa { get => mesa; set => mesa = value; }
         public List<LineaTicket> Listaproductos { get => listaproductos; set => listaproductos = value; }
-        public DateTime Fecha { get => fecha; set => fecha = value; }
+        public String Fecha { get => fecha; set => fecha = value; }
     }
 }
