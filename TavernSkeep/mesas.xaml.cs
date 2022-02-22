@@ -71,11 +71,12 @@ namespace TavernSkeep
                 Viewbox v1 = new Viewbox();
                 DockPanel sp = new DockPanel();
 
-                sp.MinHeight = 200;
+                sp.MinHeight = 180;
                 sp.MinWidth = 450;
 
 
                 v1.MouseLeftButtonDown += mesas_Click;
+                v1.MouseRightButtonDown += mesas_Reservar;
                 v1.Child = sp;
                 v1.Tag = m;
 
@@ -85,45 +86,51 @@ namespace TavernSkeep
                b6.ImageSource = new BitmapImage( new Uri("./../../images/boton.png", UriKind.Relative));
                sp.Background = b6;
 
-                Image b1 = new Image();
                 Image i1 = new Image();
                 Label l1 = new Label();
+                Label l2 = new Label();
+
+
                 l1.FontSize = 30;
-                l1.Foreground = Brushes.White;
+                l2.FontSize = 20;
+                l1.Foreground = Brushes.White; 
+                l2.Foreground = Brushes.White;
+
 
                 l1.Content = m.Codigo;
-
-
-
-
-               
-
-
-              /*  BitmapImage b3 = new BitmapImage();
-                b3.BeginInit();
-                b3.UriSource = new Uri("./images/boton.png", UriKind.Relative);
-                b3.EndInit();
-
-                b1.Source = b3;
-              */
-                b1.MouseEnter += Mesas_Hover;
-                b1.MouseLeave += Mesas_Leave;
+                l2.Content = "Sillas:"+m.N_sillas;
 
                 
                 l1.VerticalAlignment = VerticalAlignment.Center;
-                l1.HorizontalAlignment = HorizontalAlignment.Right;
+                l1.HorizontalAlignment = HorizontalAlignment.Right; 
+                l2.VerticalAlignment = VerticalAlignment.Center; 
+                l2.HorizontalAlignment = HorizontalAlignment.Right;
 
                 l1.IsEnabled = false;
 
                 Thickness t1 = l1.Margin;
-                t1.Right = 120;
+                t1.Right = 100;
                 l1.Margin = t1;
 
-                sp.Children.Add(b1);
-                sp.Children.Add(i1);
-                sp.Children.Add(l1);
+                Thickness t2 = l2.Margin;
+                t2.Right = 95;
+                l2.Margin = t2;
 
-                
+
+                StackPanel sp1 = new StackPanel(); 
+                sp1.VerticalAlignment = VerticalAlignment.Center;
+                sp1.HorizontalAlignment = HorizontalAlignment.Center;
+
+                sp1.Orientation = Orientation.Vertical;
+
+
+                sp.Children.Add(i1);
+                sp.Children.Add(sp1);
+                sp1.Children.Add(l1);
+                sp1.Children.Add(l2);
+
+
+
 
                 if (m.Ticket_actual.Equals("uwu"))
                 {
@@ -144,7 +151,7 @@ namespace TavernSkeep
                     b5.EndInit();
                     i1.Source = b5;
                     ImageBrush b8 = new ImageBrush();
-                    b8.ImageSource = new BitmapImage(new Uri("./../../images/boton.png", UriKind.Relative));
+                    b8.ImageSource = new BitmapImage(new Uri("./../../images/boton3.png", UriKind.Relative));
                     sp.Background = b8;
                 }
                 if (m.Is_reservada && m.Ticket_actual.Equals("uwu")) { 
@@ -177,29 +184,6 @@ namespace TavernSkeep
 
         }
 
-        public void Mesas_Hover(object sender, MouseEventArgs e)
-        {
-            Image l1 = sender as Image;
-
-            BitmapImage b3 = new BitmapImage();
-            b3.BeginInit();
-            b3.UriSource = new Uri("./../../images/boton_focus.png", UriKind.Relative);
-            b3.EndInit();
-
-            l1.Source = b3;
-        }
-
-        public void Mesas_Leave(object sender, MouseEventArgs e)
-        {
-            Image l1 = sender as Image;
-
-            BitmapImage b3 = new BitmapImage();
-            b3.BeginInit();
-            b3.UriSource = new Uri("./../../images/boton.png", UriKind.Relative);
-            b3.EndInit();
-
-            l1.Source = b3;
-        }
         private void mesas_Click(object sender, MouseButtonEventArgs e)
         {
             Viewbox buttonmesa = sender as Viewbox;
@@ -260,6 +244,30 @@ namespace TavernSkeep
                 Close();
             }
 
+        }
+
+        //Para reservar mesas o quitar la reserva de la mesa
+        private void mesas_Reservar(object sender, MouseButtonEventArgs e)
+        {
+            Viewbox buttonmesa = sender as Viewbox;
+            Mesa m = buttonmesa.Tag as Mesa;
+
+            if (m.Is_reservada)
+            {
+                 var request = new RestRequest("mesa/" + m.Codigo, Method.Put);
+                request.AddJsonBody(new { ticket_actual = m.Ticket_actual, zona = m.Zona, n_sillas = m.N_sillas, is_reservada = false, codigo = m.Codigo });
+                var response = client.ExecutePutAsync(request);
+
+
+                Close();
+            }else
+            {
+                var request = new RestRequest("mesa/" + m.Codigo, Method.Put);
+                request.AddJsonBody(new { ticket_actual = m.Ticket_actual, zona = m.Zona, n_sillas = m.N_sillas, is_reservada = true, codigo = m.Codigo });
+                var response = client.ExecutePutAsync(request);
+
+                Close();
+            }
         }
     }
 }

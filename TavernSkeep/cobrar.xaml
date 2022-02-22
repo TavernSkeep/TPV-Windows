@@ -334,7 +334,7 @@
                                         </Grid>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="true">
-                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton3.png" />
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>

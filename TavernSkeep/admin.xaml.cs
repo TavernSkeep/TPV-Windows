@@ -68,13 +68,26 @@ namespace TavernSkeep
             nombre.Text = "";
         }
 
+        private void EditarProducto(string Specs, double DoublePrecio, int IntStock)
+        {
+            var request = new RestRequest("producto/" + nombre.Text, Method.Put);
+            request.AddJsonBody(new { nombre = nombre.Text, especificaciones = Specs, precio = DoublePrecio, stock = IntStock });
+            var response = client.ExecutePutAsync(request);
+
+            MessageBox.Show("Producto: [" + nombre.Text + "] modificado satisfactoriamente.");
+            nombre.Text = "";
+            specs.Text = "";
+            precio.Text = "";
+            stock.Text = "";
+        }
+
         private void EditarEmpleado(string Dni, string Contraseña, string Puesto, string Telefono, string Email)
         {
             var request = new RestRequest("empleado/" + dni, Method.Put);
             request.AddJsonBody(new { dni = Dni, contraseña = Contraseña, puesto = Puesto, telefono = Telefono, email = Email });
             var response = client.ExecutePutAsync(request);
 
-            MessageBox.Show("Empleado con DNI: " + Dni + " modificado satisfactoriamente.");
+            MessageBox.Show("Empleado con DNI: [" + Dni + "] modificado satisfactoriamente.");
             dni.Text = "";
             contrasena.Text = "";
             puesto.Text = "";
@@ -261,7 +274,7 @@ namespace TavernSkeep
             specs.TextAlignment = TextAlignment.Center;
             specs.Foreground = Brushes.Gold;
             specs.FontSize = 18;
-            specs.MaxLength = 50;
+            specs.MaxLength = 200;
 
             st2.Children.Add(LblSpecs);
             st2.Children.Add(specs);
@@ -713,7 +726,180 @@ namespace TavernSkeep
             Grid.SetRow(ModificarProd, 0);
             Grid.SetColumn(ModificarProd, 0);
 
-            //
+            // Nombre
+
+            StackPanel st1 = new StackPanel();
+            st1.Orientation = Orientation.Vertical;
+            st1.Background = Brushes.Transparent;
+
+            Label LblNombre = new Label();
+            LblNombre.Content = "Nombre:";
+            LblNombre.Foreground = Brushes.Gold;
+            LblNombre.FontSize = 20;
+            LblNombre.HorizontalAlignment = HorizontalAlignment.Center;
+            LblNombre.VerticalAlignment = VerticalAlignment.Center;
+
+            nombre = new TextBox();
+            nombre.Background = Brushes.Transparent;
+            nombre.TextAlignment = TextAlignment.Center;
+            nombre.Foreground = Brushes.Gold;
+            nombre.FontSize = 18;
+            nombre.MaxLength = 20;
+
+            st1.Children.Add(LblNombre);
+            st1.Children.Add(nombre);
+
+            GridDatos.RowDefinitions.Add(new RowDefinition());
+            GridDatos.Children.Add(st1);
+            Grid.SetRow(st1, 1);
+            Grid.SetColumn(st1, 0);
+
+            // Especificaciones
+
+            StackPanel st2 = new StackPanel();
+            st2.Orientation = Orientation.Vertical;
+            st2.Background = Brushes.Transparent;
+
+            Label LblSpecs = new Label();
+            LblSpecs.Content = "Especificaciones:";
+            LblSpecs.Foreground = Brushes.Gold;
+            LblSpecs.FontSize = 20;
+            LblSpecs.HorizontalAlignment = HorizontalAlignment.Center;
+            LblSpecs.VerticalAlignment = VerticalAlignment.Center;
+
+            specs = new TextBox();
+            specs.Background = Brushes.Transparent;
+            specs.TextAlignment = TextAlignment.Center;
+            specs.Foreground = Brushes.Gold;
+            specs.FontSize = 18;
+            specs.MaxLength = 200;
+
+            st2.Children.Add(LblSpecs);
+            st2.Children.Add(specs);
+
+            GridDatos.RowDefinitions.Add(new RowDefinition());
+            GridDatos.Children.Add(st2);
+            Grid.SetRow(st2, 2);
+            Grid.SetColumn(st2, 0);
+
+            // Precio
+
+            StackPanel st3 = new StackPanel();
+            st2.Orientation = Orientation.Vertical;
+            st2.Background = Brushes.Transparent;
+
+            Label LblPrecio = new Label();
+            LblPrecio.Content = "Precio:";
+            LblPrecio.Foreground = Brushes.Gold;
+            LblPrecio.FontSize = 20;
+            LblPrecio.HorizontalAlignment = HorizontalAlignment.Center;
+            LblPrecio.VerticalAlignment = VerticalAlignment.Center;
+
+            precio = new TextBox();
+            precio.Background = Brushes.Transparent;
+            precio.TextAlignment = TextAlignment.Center;
+            precio.Foreground = Brushes.Gold;
+            precio.FontSize = 18;
+            precio.MaxLength = 20;
+
+            st2.Children.Add(LblPrecio);
+            st2.Children.Add(precio);
+
+            GridDatos.RowDefinitions.Add(new RowDefinition());
+            GridDatos.Children.Add(st3);
+            Grid.SetRow(st3, 3);
+            Grid.SetColumn(st3, 0);
+
+            // Stock
+
+            StackPanel st4 = new StackPanel();
+            st3.Orientation = Orientation.Vertical;
+            st3.Background = Brushes.Transparent;
+
+            Label LblStock = new Label();
+            LblStock.Content = "stock:";
+            LblStock.Foreground = Brushes.Gold;
+            LblStock.FontSize = 20;
+            LblStock.HorizontalAlignment = HorizontalAlignment.Center;
+            LblStock.VerticalAlignment = VerticalAlignment.Center;
+
+            stock = new TextBox();
+            stock.Background = Brushes.Transparent;
+            stock.TextAlignment = TextAlignment.Center;
+            stock.Foreground = Brushes.Gold;
+            stock.FontSize = 18;
+            stock.MaxLength = 20;
+
+            st3.Children.Add(LblStock);
+            st3.Children.Add(stock);
+
+            GridDatos.RowDefinitions.Add(new RowDefinition());
+            GridDatos.Children.Add(st4);
+            Grid.SetRow(st4, 4);
+            Grid.SetColumn(st4, 0);
+
+
+            DockPanel st6 = new DockPanel();
+            st6.VerticalAlignment = VerticalAlignment.Bottom;
+            st6.Background = Brushes.Transparent;
+
+            StackPanel st7 = new StackPanel();
+            st7.Orientation = Orientation.Vertical;
+            st7.HorizontalAlignment = HorizontalAlignment.Right;
+            st7.Background = Brushes.Transparent;
+
+            StackPanel st8 = new StackPanel();
+            st8.Orientation = Orientation.Vertical;
+            st8.HorizontalAlignment = HorizontalAlignment.Left;
+            st8.Background = Brushes.Transparent;
+
+            Image b1 = new Image();
+            b1.MouseLeftButtonDown += ButtonEditarProducto_Click;
+            b1.MouseEnter += Boton_Hover;
+            b1.MouseLeave += Boton_Leave;
+
+            Image b2 = new Image();
+            b2.MouseLeftButtonDown += AutorellenarProducto_Click;
+            b2.MouseEnter += Boton_Hover;
+            b2.MouseLeave += Boton_Leave;
+
+            Label l1 = new Label();
+            l1.Content = "/CONFIRMAR CAMBIOS/";
+            l1.Foreground = Brushes.Gold;
+            l1.FontSize = 20;
+            l1.HorizontalAlignment = HorizontalAlignment.Right;
+            l1.VerticalAlignment = VerticalAlignment.Bottom;
+
+            Label l2 = new Label();
+            l2.Content = "/RELLENAR CON NOMBRE/";
+            l2.Foreground = Brushes.Gold;
+            l2.FontSize = 20;
+            l2.HorizontalAlignment = HorizontalAlignment.Left;
+            l2.VerticalAlignment = VerticalAlignment.Bottom;
+
+
+            BitmapImage b3 = new BitmapImage();
+            b3.BeginInit();
+            b3.UriSource = new Uri("./../../images/boton.png", UriKind.Relative);
+            b3.EndInit();
+            b1.Source = b3;
+            b2.Source = b3;
+            b1.Width = 170;
+            b1.Height = 80;
+            b2.Width = 170;
+            b2.Height = 80;
+
+            st7.Children.Add(b1);
+            st7.Children.Add(l1);
+            st8.Children.Add(b2);
+            st8.Children.Add(l2);
+            st6.Children.Add(st7);
+            st6.Children.Add(st8);
+
+            GridDatos.RowDefinitions.Add(new RowDefinition());
+            GridDatos.Children.Add(st6);
+            Grid.SetRow(st6, 5);
+            Grid.SetColumn(st6, 5);
         }
 
         private void ModificarEmpleado_Click(object sender, RoutedEventArgs e)
@@ -1117,7 +1303,7 @@ namespace TavernSkeep
             else if (dni.Text == null)
             {
                 MessageBox.Show("Wtf. No se como has hecho eso, pero negated.");
-                return;
+                return; // Si lees esto, eres un mastodonte máquina champion leyenda
             }
 
             BorrarEmpleado(dni.Text);
@@ -1202,6 +1388,76 @@ namespace TavernSkeep
             puesto.Text = emp1.Puesto;
             telefono.Text = emp1.Telefono;
             email.Text = emp1.Email;
+        }
+
+        private void ButtonEditarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            double doublePrecio = 0;
+            int intStock = 0;
+
+            if (nombre.Text.Equals(""))
+            {
+                MessageBox.Show("El nombre no puede estar vacío. Inserta el nombre del producto a modificar.");
+                return;
+            }
+            else if (specs.Text == null || specs.Text.Equals(""))
+            {
+                MessageBox.Show("Las especificaciones no son válidas.");
+                return;
+            }
+            else if (precio.Text == null || precio.Text.Equals("") || precio.Text.Contains(" ") || !Double.TryParse(precio.Text, out doublePrecio))
+            {
+                MessageBox.Show("El precio no es válido.");
+                return;
+            }
+            else if (stock.Text == null || stock.Text.Equals("") || stock.Text.Contains(" ") || !int.TryParse(stock.Text, out intStock))
+            {
+                MessageBox.Show("El stock no es válido.");
+                return;
+
+            }
+
+            EditarProducto(specs.Text, doublePrecio, intStock);
+        }
+
+        private void AutorellenarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            if (nombre.Text.Equals(""))
+            {
+                MessageBox.Show("El nombre de autorellenar no puede estar vacio.");
+                return;
+            }
+            else if (nombre.Text == null)
+            {
+                MessageBox.Show("Wtf. No se como has hecho eso, pero negated.");
+                return;
+            }
+
+            string id = "/producto/" + nombre.Text;
+
+            var request = new RestRequest(id, Method.Get);
+            var response = client.GetAsync(request);
+            Producto pr1 = new Producto();
+
+            try
+            {
+                if (!response.Result.Content.Equals("null"))
+                    pr1 = JsonConvert.DeserializeObject<Producto>(response.Result.Content);
+                else
+                {
+                    MessageBox.Show("No hay productos con ese nombre. Asegúrate de poner bien las minúsculas y mayúsculas");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha habido problemas conectando con la base de datos, compruebe su conexión.");
+                return;
+            }
+
+            specs.Text = pr1.Especificaciones;
+            precio.Text = pr1.Precio.ToString();
+            stock.Text = pr1.Stock.ToString();
         }
 
         private void ButtonBorrarProd_Click(object sender, RoutedEventArgs e)

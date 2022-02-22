@@ -49,7 +49,7 @@
                                         <Grid>
                                             <Image 
                                             x:Name="buttonImage" Stretch="Fill"
-                                            Source="/TavernSkeep;component/images/boton.png"/>
+                                            Source="/TavernSkeep;component/images/boton2_focus.png"/>
                                             <ContentPresenter
                                             Margin="{TemplateBinding Padding}"
                                             HorizontalAlignment="Center"
@@ -57,7 +57,7 @@
                                         </Grid>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="true">
-                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton_focus.png" />
+                                                <Setter TargetName="buttonImage" Property="Source" Value="/TavernSkeep;component/images/boton2.png" />
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>

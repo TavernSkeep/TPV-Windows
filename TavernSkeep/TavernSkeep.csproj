@@ -327,6 +327,7 @@
     <Resource Include="images\calc_bar.png" />
     <Resource Include="images\boton2.png" />
     <Resource Include="images\boton2_focus.png" />
+    <Resource Include="images\boton3.png" />
     <Content Include="images\loading-dots-white.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
