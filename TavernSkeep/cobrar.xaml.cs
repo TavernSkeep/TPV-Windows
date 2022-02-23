@@ -104,7 +104,7 @@ namespace TavernSkeep
             // Método para modificar la mesa y añadirle el ticket actual
 
             request = new RestRequest("mesa/" + tick.Codigo, Method.Put);
-            request.AddJsonBody(new { ticket_actual = "uwu", zona = m.Zona, n_sillas = m.N_sillas, is_reservada = m.Is_reservada, codigo = m.Codigo, _id = m.Codigo });
+            request.AddJsonBody(new { ticket_actual = "uwu", zona = m.Zona, n_sillas = m.N_sillas, is_reservada = m.Is_reservada, codigo = m.Codigo});
             response = client.ExecutePutAsync(request);
 
             cobrarsatisfactorio = true;
