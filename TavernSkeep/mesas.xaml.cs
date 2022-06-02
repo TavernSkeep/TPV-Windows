@@ -24,7 +24,7 @@ namespace TavernSkeep
         {
             get { return ticketmesa; }
         }
-        RestClient client = new RestClient("http://localhost:8080");
+        RestClient client = new RestClient("https://tavernskeep-api.herokuapp.com");
         ListView ListTicket;
         List<Button> BotonesMesas = new List<Button>();
         List<Mesa> ObjetosMesa = new List<Mesa>();
@@ -219,7 +219,6 @@ namespace TavernSkeep
 
             else
             {
-
                 // Método para coger el ticket actual de la mesa y devolverlo a la pantalla principal
 
                 string id = "/ticket/" + m.Ticket_actual;

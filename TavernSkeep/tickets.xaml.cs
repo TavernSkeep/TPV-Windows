@@ -19,7 +19,7 @@ namespace TavernSkeep
 {
     public partial class tickets : Window
     {
-        RestClient client = new RestClient("http://localhost:8080");
+        RestClient client = new RestClient("https://tavernskeep-api.herokuapp.com");
         List<LineaTicket> lineasticket = new List<LineaTicket>();
         public tickets()
         {

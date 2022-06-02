@@ -19,7 +19,7 @@ namespace TavernSkeep
 {
     public partial class admin : Window
     {
-        RestClient client = new RestClient("http://localhost:8080");
+        RestClient client = new RestClient("https://tavernskeep-api.herokuapp.com");
         TextBox nombre;
         TextBox apellidos;
         TextBox dni;

@@ -21,7 +21,7 @@ namespace TavernSkeep
     public partial class MainWindow : Window
     {
         int intentos = 0;
-        RestClient client = new RestClient("http://localhost:8080");
+        RestClient client = new RestClient("https://tavernskeep-api.herokuapp.com");
         Empleado emp1;
         //static Cursor sword = new Cursor(Application.GetResourceStream(new Uri("sword.cur")).Stream);
         public MainWindow()

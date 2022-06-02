@@ -18,7 +18,7 @@ namespace TavernSkeep
 {
     public partial class cobrar : Window
     {
-        RestClient client = new RestClient("http://localhost:8080");
+        RestClient client = new RestClient("https://tavernskeep-api.herokuapp.com");
         bool cobrarsatisfactorio = false;
         public bool CobrarSatisfactorio
         {

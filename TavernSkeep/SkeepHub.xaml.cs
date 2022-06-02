@@ -22,7 +22,7 @@ namespace TavernSkeep
 {
     public partial class SkeepHub : Window
     {
-        RestClient client = new RestClient("http://localhost:8080");
+        RestClient client = new RestClient("https://tavernskeep-api.herokuapp.com");
         Empleado emp1;
         List<string> AdminJobs = new List<string> {"Jefe", "Admin", "Encargado"};
         List<List<Producto>> catPag = new List<List<Producto>>();
